@@ -1,0 +1,14 @@
+{
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:prettier/recommended",
+      "plugin:testing-library/react" 
+    ],
+    "plugins": ["prettier", "testing-library"],
+    "rules": {
+      "prettier/prettier": "error",
+      "testing-library/no-wait-for-side-effects": "off"
+    }
+  }
+  

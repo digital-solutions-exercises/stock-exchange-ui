@@ -1,23 +1,38 @@
-import React from 'react';
-import './App.css';
+import { useState } from "react";
+import ThemeContext from "./context/ThemeContext";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./pages/Root";
+import HomePage from "./pages/HomePage";
+import DetailsPage from "./pages/DetailsPage";
+import StockContext from "./context/StockContext";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "/details",
+        element: <DetailsPage />,
+      },
+    ],
+  },
+]);
 
 function App() {
+  const [darkTheme, setDarkTheme] = useState(false);
+  const [stockSymbol, setStockSymbol] = useState("AAPL");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeContext.Provider value={{ darkTheme, setDarkTheme }}>
+      <StockContext.Provider value={{ stockSymbol, setStockSymbol }}>
+        <RouterProvider router={router} />
+      </StockContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 
