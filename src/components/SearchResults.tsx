@@ -3,7 +3,13 @@ import ThemeContext from "../context/ThemeContext";
 import StockContext from "../context/StockContext";
 import { YahooSearchQuote } from "../types/yahooData.types";
 
-const SearchResults = ({ results }: { results: YahooSearchQuote[] }) => {
+const SearchResults = ({
+  results,
+  setBestMatches,
+}: {
+  results: YahooSearchQuote[];
+  setBestMatches: any;
+}) => {
   const { darkTheme } = useContext(ThemeContext)!;
   const { setStockSymbol } = useContext(StockContext)!;
 
@@ -19,6 +25,7 @@ const SearchResults = ({ results }: { results: YahooSearchQuote[] }) => {
               className={`cursor-pointer p-4 m-2 flex items-center justify-between rounded-md ${darkTheme ? "hover:bg-indigo-600" : "hover:bg-indigo-200"} transition duration-300`}
               onClick={() => {
                 setStockSymbol(item.symbol);
+                setBestMatches([]);
               }}
             >
               <span>{item.symbol}</span>

@@ -90,6 +90,15 @@ describe("handleDates.util.ts", () => {
       expect(result).toEqual(expectedDate);
     });
 
+    test("should create a new date if only date is defined", () => {
+      const date = "2024-01-01T00:00:00Z";
+      const expectedDate = new Date("2024-01-01T00:00:00Z");
+
+      const result = createDate(date);
+
+      expect(result).toEqual(expectedDate);
+    });
+
     test("should handle string input date", () => {
       const date = "2024-01-01T00:00:00Z";
       const days = 10;

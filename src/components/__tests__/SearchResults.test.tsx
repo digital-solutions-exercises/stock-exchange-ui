@@ -7,6 +7,7 @@ import { YahooSearchQuote } from "../../types/yahooData.types";
 
 describe("SearchResults.tsx", () => {
   const mockSetStockSymbol = jest.fn();
+  const mockSetBestMatches = jest.fn();
 
   const renderSearchResults = (
     results: YahooSearchQuote[],
@@ -17,7 +18,7 @@ describe("SearchResults.tsx", () => {
         <StockContext.Provider
           value={{ stockSymbol: "AAPL", setStockSymbol: mockSetStockSymbol }}
         >
-          <SearchResults results={results} />
+          <SearchResults results={results} setBestMatches={mockSetBestMatches} />
         </StockContext.Provider>
       </ThemeContext.Provider>,
     );

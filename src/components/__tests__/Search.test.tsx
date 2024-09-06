@@ -67,6 +67,8 @@ describe("Search.tsx", () => {
     const inputElement = screen.getByPlaceholderText("Search stock");
 
     fireEvent.change(inputElement, { target: { value: "AAPL" } });
+    expect(inputElement).toHaveValue("AAPL");
+    
     fireEvent.keyDown(inputElement, { key: "Enter", code: "Enter" });
 
     await waitFor(() => {
