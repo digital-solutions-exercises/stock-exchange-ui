@@ -18,7 +18,10 @@ describe("SearchResults.tsx", () => {
         <StockContext.Provider
           value={{ stockSymbol: "AAPL", setStockSymbol: mockSetStockSymbol }}
         >
-          <SearchResults results={results} setBestMatches={mockSetBestMatches} />
+          <SearchResults
+            results={results}
+            setBestMatches={mockSetBestMatches}
+          />
         </StockContext.Provider>
       </ThemeContext.Provider>,
     );

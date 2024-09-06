@@ -1,15 +1,18 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Header from "../Header";
+import ThemeContext from "../../context/ThemeContext";
 
 jest.mock("../ThemeIcon", () => () => <div data-testid="theme-icon-id"></div>);
 
 describe("Header.tsx", () => {
-  const renderHeader = () => {
+  const renderHeader = (darkTheme = false) => {
     render(
-      <Router>
-        <Header />
-      </Router>,
+      <ThemeContext.Provider value={{ darkTheme, setDarkTheme: jest.fn() }}>
+        <Router>
+          <Header />
+        </Router>
+      </ThemeContext.Provider>,
     );
   };
 
@@ -27,10 +30,10 @@ describe("Header.tsx", () => {
     renderHeader();
 
     const homeLink = screen.getByText("Home");
-    expect(homeLink).toHaveClass("text-indigo-700");
+    expect(homeLink).not.toHaveClass("text-indigo-300");
 
     const detailsLink = screen.getByText("Details");
-    expect(detailsLink).not.toHaveClass("text-indigo-700");
+    expect(detailsLink).toHaveClass("text-indigo-300");
   });
 
   test("applies active class to Details link when clicked", () => {
@@ -40,10 +43,10 @@ describe("Header.tsx", () => {
 
     fireEvent.click(detailsLink);
 
-    expect(detailsLink).toHaveClass("text-indigo-700");
+    expect(detailsLink).not.toHaveClass("text-indigo-300");
 
     const homeLink = screen.getByText("Home");
-    expect(homeLink).not.toHaveClass("text-indigo-700");
+    expect(homeLink).toHaveClass("text-indigo-300");
   });
 
   test("renders the ThemeIcon component", () => {
@@ -51,5 +54,12 @@ describe("Header.tsx", () => {
 
     const themeIcon = screen.getByTestId("theme-icon-id");
     expect(themeIcon).toBeInTheDocument();
+  });
+
+  test("applies dark theme styles when darkTheme is true", () => {
+    renderHeader(true);
+
+    const headerElement = screen.getByTestId("header-component-id");
+    expect(headerElement).toHaveClass("bg-gray-900 border-gray-800 text-white");
   });
 });
