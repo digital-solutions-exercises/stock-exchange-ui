@@ -7,6 +7,11 @@ import {
 } from "../../mocks/yahooMockData.mocks";
 
 jest.mock("../Card", () => ({ children }: any) => <div>{children}</div>);
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({
+    t: (key: string) => key,
+  }),
+}));
 
 describe("Details.tsx", () => {
   const renderDetails = (
@@ -27,13 +32,13 @@ describe("Details.tsx", () => {
     renderDetails(false);
 
     const expectedLabels = [
-      "Name",
-      "Country",
-      "Currency",
-      "Exchange",
-      "IPO Date",
-      "Market Capitalization",
-      "Industry",
+      "components.Details.detailList.longName",
+      "components.Details.detailList.region",
+      "components.Details.detailList.currency",
+      "components.Details.detailList.exchange",
+      "components.Details.detailList.firstTradeDateMilliseconds",
+      "components.Details.detailList.marketCap",
+      "components.Details.detailList.industry",
     ];
 
     expectedLabels.forEach((label) => {

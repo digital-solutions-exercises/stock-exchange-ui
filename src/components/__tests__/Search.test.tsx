@@ -8,6 +8,11 @@ import StockContext from "../../context/StockContext";
 jest.mock("../../api/yahooData", () => ({
   getYahooSearchQuotes: jest.fn(),
 }));
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({
+    t: (key: string) => key,
+  }),
+}));
 
 describe("Search.tsx", () => {
   const mockSetStockSymbol = jest.fn();
@@ -27,7 +32,7 @@ describe("Search.tsx", () => {
   test("renders input field and buttons", () => {
     renderSearch(false);
 
-    const inputElement = screen.getByPlaceholderText("Search stock");
+    const inputElement = screen.getByPlaceholderText("components.Search.input.placeholder");
     expect(inputElement).toBeInTheDocument();
 
     const searchButton = screen.getByRole("button", { name: "Search input" });
@@ -41,7 +46,7 @@ describe("Search.tsx", () => {
 
     renderSearch(false);
 
-    const inputElement = screen.getByPlaceholderText("Search stock");
+    const inputElement = screen.getByPlaceholderText("components.Search.input.placeholder");
 
     fireEvent.change(inputElement, { target: { value: "AAPL" } });
     expect(inputElement).toHaveValue("AAPL");
@@ -64,7 +69,7 @@ describe("Search.tsx", () => {
 
     renderSearch(false);
 
-    const inputElement = screen.getByPlaceholderText("Search stock");
+    const inputElement = screen.getByPlaceholderText("components.Search.input.placeholder");
 
     fireEvent.change(inputElement, { target: { value: "AAPL" } });
     expect(inputElement).toHaveValue("AAPL");
@@ -95,7 +100,7 @@ describe("Search.tsx", () => {
 
     renderSearch(false);
 
-    const inputElement = screen.getByPlaceholderText("Search stock");
+    const inputElement = screen.getByPlaceholderText("components.Search.input.placeholder");
 
     fireEvent.change(inputElement, { target: { value: "AAPL" } });
     expect(inputElement).toHaveValue("AAPL");
@@ -116,7 +121,7 @@ describe("Search.tsx", () => {
   test("applies dark theme styles when darkTheme is true", () => {
     renderSearch(true);
 
-    const inputElement = screen.getByPlaceholderText("Search stock");
+    const inputElement = screen.getByPlaceholderText("components.Search.input.placeholder");
     expect(inputElement).toHaveClass("bg-gray-900");
 
     const containerElement = screen.getByTestId("search-component-id");

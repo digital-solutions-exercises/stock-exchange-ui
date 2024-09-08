@@ -67,7 +67,7 @@ export const getYahooQuote = async (
 
 export const getYahooHistoryData = async (
   stockSymbol: string,
-  resolution: "1d" | "1wk" | "1mo",
+  resolution: "1h" | "1d" | "1wk" | "1mo",
   startDate: number,
   endDate: number,
 ): Promise<YahooHistoryDataRow[]> => {

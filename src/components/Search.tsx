@@ -4,8 +4,10 @@ import SearchResults from "./SearchResults";
 import ThemeContext from "../context/ThemeContext";
 import { getYahooSearchQuotes } from "../api/yahooData";
 import { YahooSearchQuote } from "../types/yahooData.types";
+import { useTranslation } from "react-i18next";
 
 const Search = () => {
+  const { t } = useTranslation();
   const [input, setInput] = useState("");
   const [bestMatches, setBestMatches] = useState<YahooSearchQuote[]>([]);
 
@@ -37,7 +39,7 @@ const Search = () => {
         type="text"
         value={input}
         className={`w-full px-4 py-2 focus:outline-none rounder-md ${darkTheme ? "bg-gray-900" : null}`}
-        placeholder="Search stock"
+        placeholder={t("components.Search.input.placeholder")}
         onChange={(event) => {
           setInput(event.target.value);
         }}

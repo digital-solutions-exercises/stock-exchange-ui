@@ -6,6 +6,22 @@
         "Header": {
             "homeLink": "Domov",
             "detailsLink": "Detaily"
+        },
+        "Details": {
+            "detailList": {
+                "longName": "Názov",
+                "region": "Krajina",
+                "currency": "Mena",
+                "exchange": "Burza",
+                "firstTradeDateMilliseconds": "IPO Dátum",
+                "marketCap": "Trhová Hodnota",
+                "industry": "Odvetvie"
+            }
+        },
+        "Search": {
+            "input": {
+                "placeholder": "Hľadať akcie"
+            }
         }
     }
 }

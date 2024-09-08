@@ -6,7 +6,22 @@
         "Header": {
             "homeLink": "Home",
             "detailsLink": "Details"
+        },
+        "Details": {
+            "detailList": {
+                "longName": "Name",
+                "region": "Country",
+                "currency": "Currency",
+                "exchange": "Exchange",
+                "firstTradeDateMilliseconds": "IPO Date",
+                "marketCap": "Market Capitalization",
+                "industry": "Industry"
+            }
+        },
+        "Search": {
+            "input": {
+                "placeholder": "Search stock"
+            }
         }
     }
 }
-  

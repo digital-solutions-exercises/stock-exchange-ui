@@ -3,7 +3,7 @@ import Header from "../components/Header";
 
 const Root = () => {
   return (
-    <div data-testid="root-div-id" className="font-quicksand h-full">
+    <div data-testid="root-div-id" className="font-quicksand">
       <Header />
       <Outlet />
     </div>
