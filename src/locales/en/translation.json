@@ -1,0 +1,12 @@
+{
+    "pages": {
+        "HomePage": {}
+    },
+    "components": {
+        "Header": {
+            "homeLink": "Home",
+            "detailsLink": "Details"
+        }
+    }
+}
+  
