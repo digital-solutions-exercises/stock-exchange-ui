@@ -30,13 +30,16 @@ export const getYahooQuoteCompanyDetails = async (
   stockSymbol: string,
 ): Promise<YahooCompanyDetails> => {
   try {
-    const response = await axios.get(`${basePath}/yahoo/stock-details`, {
-      params: { stockSymbol },
-      headers: {
-        Authorization: "Bearer ACCESS_TOKEN",
-        "Content-Type": "application/json",
+    const response = await axios.get(
+      `${basePath}/yahoo/quote-company-details`,
+      {
+        params: { stockSymbol },
+        headers: {
+          Authorization: "Bearer ACCESS_TOKEN",
+          "Content-Type": "application/json",
+        },
       },
-    });
+    );
 
     return response.data;
   } catch (error: any) {

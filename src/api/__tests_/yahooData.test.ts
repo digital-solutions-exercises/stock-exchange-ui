@@ -36,11 +36,13 @@ describe("yahooData.ts", () => {
 
     it("should throw an error when API call fails", async () => {
       const error = new Error("Network Error");
-      const mockedAxiosError = { response: { data: error }};
+      const mockedAxiosError = { response: { data: error } };
 
       mockedAxios.get.mockRejectedValue(mockedAxiosError);
 
-      await expect(getYahooSearchQuotes("AAPL")).rejects.toThrow("Network Error");
+      await expect(getYahooSearchQuotes("AAPL")).rejects.toThrow(
+        "Network Error",
+      );
     });
   });
 
@@ -51,7 +53,7 @@ describe("yahooData.ts", () => {
       const result = await getYahooQuoteCompanyDetails("AAPL");
       expect(result).toEqual(mockYahooQuoteCompanyDetails);
       expect(mockedAxios.get).toHaveBeenCalledWith(
-        "http://localhost:4002/yahoo/stock-details",
+        "http://localhost:4002/yahoo/quote-company-details",
         expect.objectContaining({
           params: { stockSymbol: "AAPL" },
         }),
@@ -60,11 +62,13 @@ describe("yahooData.ts", () => {
 
     it("should throw an error when API call fails", async () => {
       const error = new Error("Network Error");
-      const mockedAxiosError = { response: { data: error }};
+      const mockedAxiosError = { response: { data: error } };
 
       mockedAxios.get.mockRejectedValue(mockedAxiosError);
 
-      await expect(getYahooQuoteCompanyDetails("AAPL")).rejects.toThrow("Network Error");
+      await expect(getYahooQuoteCompanyDetails("AAPL")).rejects.toThrow(
+        "Network Error",
+      );
     });
   });
 
@@ -84,7 +88,7 @@ describe("yahooData.ts", () => {
 
     it("should throw an error when API call fails", async () => {
       const error = new Error("Network Error");
-      const mockedAxiosError = { response: { data: error }};
+      const mockedAxiosError = { response: { data: error } };
 
       mockedAxios.get.mockRejectedValue(mockedAxiosError);
 
@@ -118,7 +122,7 @@ describe("yahooData.ts", () => {
 
     it("should throw an error when API call fails", async () => {
       const error = new Error("Network Error");
-      const mockedAxiosError = { response: { data: error }};
+      const mockedAxiosError = { response: { data: error } };
 
       mockedAxios.get.mockRejectedValue(mockedAxiosError);
 
