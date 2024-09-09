@@ -31,12 +31,14 @@ const Chart = () => {
   const formatData = (
     data: YahooHistoryDataRow[],
   ): { value: string; date: string }[] => {
-    return data.map(({ close, date }) => {
-      return {
-        value: close.toFixed(2),
-        date: new Date(date).toLocaleDateString(),
-      };
-    });
+    return data
+      .filter(({ close }) => close !== null)
+      .map(({ close, date }) => {
+        return {
+          value: close.toFixed(2),
+          date: new Date(date).toLocaleDateString(),
+        };
+      });
   };
 
   const calculateDomain = (
