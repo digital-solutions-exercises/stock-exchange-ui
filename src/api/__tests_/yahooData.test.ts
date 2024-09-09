@@ -35,12 +35,12 @@ describe("yahooData.ts", () => {
     });
 
     it("should throw an error when API call fails", async () => {
-      const errorMessage = "Network Error";
-      mockedAxios.get.mockRejectedValue(new Error(errorMessage));
+      const error = new Error("Network Error");
+      const mockedAxiosError = { response: { data: error }};
 
-      await expect(getYahooSearchQuotes("AAPL")).rejects.toThrow(
-        `An error has occured: Error: ${errorMessage}`,
-      );
+      mockedAxios.get.mockRejectedValue(mockedAxiosError);
+
+      await expect(getYahooSearchQuotes("AAPL")).rejects.toThrow("Network Error");
     });
   });
 
@@ -59,12 +59,12 @@ describe("yahooData.ts", () => {
     });
 
     it("should throw an error when API call fails", async () => {
-      const errorMessage = "Network Error";
-      mockedAxios.get.mockRejectedValue(new Error(errorMessage));
+      const error = new Error("Network Error");
+      const mockedAxiosError = { response: { data: error }};
 
-      await expect(getYahooQuoteCompanyDetails("AAPL")).rejects.toThrow(
-        `An error has occured: Error: ${errorMessage}`,
-      );
+      mockedAxios.get.mockRejectedValue(mockedAxiosError);
+
+      await expect(getYahooQuoteCompanyDetails("AAPL")).rejects.toThrow("Network Error");
     });
   });
 
@@ -83,12 +83,12 @@ describe("yahooData.ts", () => {
     });
 
     it("should throw an error when API call fails", async () => {
-      const errorMessage = "Network Error";
-      mockedAxios.get.mockRejectedValue(new Error(errorMessage));
+      const error = new Error("Network Error");
+      const mockedAxiosError = { response: { data: error }};
 
-      await expect(getYahooQuote("AAPL")).rejects.toThrow(
-        `An error has occured: Error: ${errorMessage}`,
-      );
+      mockedAxios.get.mockRejectedValue(mockedAxiosError);
+
+      await expect(getYahooQuote("AAPL")).rejects.toThrow("Network Error");
     });
   });
 
@@ -117,12 +117,14 @@ describe("yahooData.ts", () => {
     });
 
     it("should throw an error when API call fails", async () => {
-      const errorMessage = "Network Error";
-      mockedAxios.get.mockRejectedValue(new Error(errorMessage));
+      const error = new Error("Network Error");
+      const mockedAxiosError = { response: { data: error }};
+
+      mockedAxios.get.mockRejectedValue(mockedAxiosError);
 
       await expect(
         getYahooHistoryData("AAPL", "1d", 1633075200, 1633248000),
-      ).rejects.toThrow(`An error has occured: Error: ${errorMessage}`);
+      ).rejects.toThrow("Network Error");
     });
   });
 });

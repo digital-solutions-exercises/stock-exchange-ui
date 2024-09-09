@@ -21,9 +21,8 @@ export const getYahooSearchQuotes = async (
     });
 
     return response.data;
-  } catch (error) {
-    const message = `An error has occured: ${error}`;
-    throw new Error(message);
+  } catch (error: any) {
+    throw error.response.data;
   }
 };
 
@@ -40,9 +39,8 @@ export const getYahooQuoteCompanyDetails = async (
     });
 
     return response.data;
-  } catch (error) {
-    const message = `An error has occured: ${error}`;
-    throw new Error(message);
+  } catch (error: any) {
+    throw error.response.data;
   }
 };
 
@@ -59,9 +57,8 @@ export const getYahooQuote = async (
     });
 
     return response.data;
-  } catch (error) {
-    const message = `An error has occured: ${error}`;
-    throw new Error(message);
+  } catch (error: any) {
+    throw error.response.data;
   }
 };
 
@@ -81,8 +78,7 @@ export const getYahooHistoryData = async (
     });
 
     return response.data;
-  } catch (error) {
-    const message = `An error has occured: ${error}`;
-    throw new Error(message);
+  } catch (error: any) {
+    throw error.response.data;
   }
 };
