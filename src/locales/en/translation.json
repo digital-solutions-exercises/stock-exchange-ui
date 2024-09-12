@@ -30,7 +30,8 @@
     "components": {
         "Header": {
             "homeLink": "Stock Exchange",
-            "detailsLink": "Invest with Confidence"
+            "detailsLink": "Invest with Confidence",
+            "logo": "Stock Exchange"
         },
         "Details": {
             "detailList": {

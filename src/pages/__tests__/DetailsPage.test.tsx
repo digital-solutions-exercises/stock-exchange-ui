@@ -15,7 +15,7 @@ describe("DetailsPage.tsx", () => {
     return render(
       <ThemeContext.Provider value={{ darkTheme, setDarkTheme: jest.fn() }}>
         <DetailsPage />
-      </ThemeContext.Provider>
+      </ThemeContext.Provider>,
     );
   };
 
@@ -26,11 +26,21 @@ describe("DetailsPage.tsx", () => {
   it("renders the DetailsPage correctly with light theme", () => {
     renderDetailsPage(false);
 
-    expect(screen.getByText("pages.DetailsPage.blocks.why.title")).toBeInTheDocument();
-    expect(screen.getByText("pages.DetailsPage.blocks.benefits.title")).toBeInTheDocument();
-    expect(screen.getByText("pages.DetailsPage.blocks.keys.title")).toBeInTheDocument();
-    expect(screen.getByText("pages.DetailsPage.blocks.how.title")).toBeInTheDocument();
-    expect(screen.getByText("pages.DetailsPage.blocks.start.title")).toBeInTheDocument();
+    expect(
+      screen.getByText("pages.DetailsPage.blocks.why.title"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("pages.DetailsPage.blocks.benefits.title"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("pages.DetailsPage.blocks.keys.title"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("pages.DetailsPage.blocks.how.title"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("pages.DetailsPage.blocks.start.title"),
+    ).toBeInTheDocument();
     expect(screen.getByText("Mocked Slider")).toBeInTheDocument();
 
     const container = screen.getByTestId("details-page-id");
@@ -40,11 +50,21 @@ describe("DetailsPage.tsx", () => {
   it("renders the DetailsPage correctly with dark theme", () => {
     renderDetailsPage(true);
 
-    expect(screen.getByText("pages.DetailsPage.blocks.why.title")).toBeInTheDocument();
-    expect(screen.getByText("pages.DetailsPage.blocks.benefits.title")).toBeInTheDocument();
-    expect(screen.getByText("pages.DetailsPage.blocks.keys.title")).toBeInTheDocument();
-    expect(screen.getByText("pages.DetailsPage.blocks.how.title")).toBeInTheDocument();
-    expect(screen.getByText("pages.DetailsPage.blocks.start.title")).toBeInTheDocument();
+    expect(
+      screen.getByText("pages.DetailsPage.blocks.why.title"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("pages.DetailsPage.blocks.benefits.title"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("pages.DetailsPage.blocks.keys.title"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("pages.DetailsPage.blocks.how.title"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("pages.DetailsPage.blocks.start.title"),
+    ).toBeInTheDocument();
     expect(screen.getByText("Mocked Slider")).toBeInTheDocument();
 
     const container = screen.getByTestId("details-page-id");

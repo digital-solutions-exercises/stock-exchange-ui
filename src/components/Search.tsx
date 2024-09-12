@@ -33,7 +33,7 @@ const Search = () => {
   return (
     <div
       data-testid="search-component-id"
-      className={`flex items-center my-4 border-2 rounded-md relative z-50 w-full sm:w-96 ${darkTheme ? "bg-gray-900 border-gray-800" : "bg-white border-neutral-200"}`}
+      className={`flex items-center my-4 border-2 rounded-md relative w-full sm:w-96 ${darkTheme ? "bg-gray-900 border-gray-800" : "bg-white border-neutral-200"}`}
     >
       <input
         type="text"

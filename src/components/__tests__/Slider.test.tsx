@@ -3,7 +3,6 @@ import Slider from "../Slider";
 import ThemeContext from "../../context/ThemeContext";
 import LanguageContext from "../../context/LanguageContext";
 import { BrowserRouter as Router } from "react-router-dom";
-import { slides } from "../../constants/blogData";
 import { languages } from "../../config/languages";
 
 jest.mock("react-i18next", () => ({

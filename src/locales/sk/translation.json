@@ -30,7 +30,8 @@
     "components": {
         "Header": {
             "homeLink": "Stock Exchange",
-            "detailsLink": "Investujte bez poplatkov"
+            "detailsLink": "Investujte bez poplatkov",
+            "logo": "Stock Exchange"
         },
         "Details": {
             "detailList": {

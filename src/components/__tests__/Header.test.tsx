@@ -5,7 +5,6 @@ import ThemeContext from "../../context/ThemeContext";
 import LanguageContext from "../../context/LanguageContext";
 import { languages } from "../../config/languages";
 
-jest.mock("../ThemeIcon", () => () => <div data-testid="theme-icon-id"></div>);
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key: string) => key,
@@ -34,6 +33,34 @@ describe("Header.tsx", () => {
 
     expect(homeLink).toBeInTheDocument();
     expect(detailsLink).toBeInTheDocument();
+  });
+
+  test("mobile - should render header menu icon, header menu should be hidden", () => {
+    window.innerWidth = 375;
+    window.dispatchEvent(new Event("resize"));
+
+    renderHeader();
+
+    const headerMenuIcon = screen.getByTestId("header-menu-icon-id");
+    expect(headerMenuIcon).toBeInTheDocument();
+
+    const headerMenu = screen.getByTestId("header-menu-id");
+
+    expect(headerMenu).toHaveClass("hidden");
+  });
+
+  test("mobile - should display header menu once clicked on header menu icon", () => {
+    window.innerWidth = 375;
+    window.dispatchEvent(new Event("resize"));
+
+    renderHeader();
+
+    const headerMenuIcon = screen.getByTestId("header-menu-icon-id");
+    fireEvent.click(headerMenuIcon);
+
+    const headerMenu = screen.getByTestId("header-menu-id");
+
+    expect(headerMenu).not.toHaveClass("hidden");
   });
 
   test("applies active class to Home link when it is active", () => {
