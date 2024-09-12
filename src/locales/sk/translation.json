@@ -1,11 +1,36 @@
 {
     "pages": {
-        "HomePage": {}
+        "HomePage": {},
+        "DetailsPage": {
+            "blocks": {
+                "why": {
+                    "title": "Prečo investovať s ",
+                    "titleSuffix": "Stock Exchange?",
+                    "content": "Hľadáte ziskovú investičnú príležitosť podloženú odborníkmi? Na Burze cenných papierov máme nielen skúsenosti, čísla a finančné znalosti, ktoré vám pomôžu, ale ponúkame aj niečo jedinečné: schopnosť investovať podľa vlastných podmienok, bez tretích strán a hlavne bez platenia poplatkov sprostredkovateľom."
+                },
+                "how": {
+                    "title": "Ako to funguje?",
+                    "content": "Ukážeme vám, ako si vytvoriť a spravovať vlastný investičný profil priamo na konkrétnej burze. Budete mať plnú kontrolu – nakupujte a predávajte, kedykoľvek budete chcieť. Jediné poplatky, ktoré zaplatíte, sú poplatky samotnej burze cenných papierov pričom žiadni sprostredkovatelia, banky ani iné tretie osoby si nevezmú svoj podiel."
+                },
+                "start": {
+                    "title": "Začnite s nami",
+                    "content": "Kontaktujte nás e-mailom, naplánujte si hovor a my vás prevedieme nastavením vášho účtu na burze. Od navigácie na platforme až po uskutočnenie prvého vkladu. Tiež Vám poskytneme investičné odporúčania, aby sme zaistili, že vaša cesta k úspechu investovania bude hladká, podložená informáciami a zisková."
+                },
+                "benefits": {
+                    "title": "Exkluzívne benefity",
+                    "content": "Okrem nezávislosti ponúkame na mieru šité odporúčania, čo nakupovať, kedy nakupovať a ako formovať svoju investičnú stratégiu. Voľba je však vždy na vás – žiadny nátlak na to, aby ste sa riadili našimi pokynmi. Všetko je len na základe odporúčaní."
+                },
+                "keys": {
+                    "title": "Kľúč k úspešnému investovaniu",
+                    "content": "Úspešná investičná stratégia presahuje jednoduchý nákup a predaj. Kladieme dôraz na diverzifikáciu, informovanosť prostredníctvom špičkových investorov, trhových správ a globálnych politických aktualizácií, čo vám pomôže vylepšiť vašu intuíciu pre lepšie rozhodovania."
+                }
+            }
+        }
     },
     "components": {
         "Header": {
-            "homeLink": "Domov",
-            "detailsLink": "Detaily"
+            "homeLink": "Stock Exchange",
+            "detailsLink": "Investujte bez poplatkov"
         },
         "Details": {
             "detailList": {
@@ -22,7 +47,9 @@
             "input": {
                 "placeholder": "Hľadať akcie"
             }
+        },
+        "Slider": {
+            "readMore": "Čítajte viac"
         }
     }
 }
-  

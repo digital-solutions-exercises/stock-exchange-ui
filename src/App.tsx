@@ -6,7 +6,7 @@ import DetailsPage from "./pages/DetailsPage";
 import ThemeContext from "./context/ThemeContext";
 import StockContext from "./context/StockContext";
 import LanguageContext from "./context/LanguageContext";
-import { languages } from "./constants/languages";
+import { languages } from "./config/languages";
 import i18n from "./i18n";
 
 const router = createBrowserRouter([

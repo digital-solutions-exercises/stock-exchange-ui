@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { languages } from "../constants/languages";
+import { languages } from "../config/languages";
 import LanguageContext from "../context/LanguageContext";
 
 const LanguageIcon = () => {

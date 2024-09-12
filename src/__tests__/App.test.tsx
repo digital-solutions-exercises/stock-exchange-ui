@@ -13,7 +13,9 @@ describe("App.tsx", () => {
   test("navigates to DetailsPage when clicking on the /details link", async () => {
     render(<App />);
 
-    const detailsLink = screen.getByRole("link", { name: /details/i });
+    const detailsLink = screen.getByRole("link", {
+      name: /Invest with Confidence/i,
+    });
 
     fireEvent.click(detailsLink);
 
@@ -24,11 +26,13 @@ describe("App.tsx", () => {
   test("navigates back to HomePage when clicking on the / link", async () => {
     render(<App />);
 
-    const detailsLink = screen.getByRole("link", { name: /details/i });
+    const detailsLink = screen.getByRole("link", {
+      name: /Invest with Confidence/i,
+    });
 
     fireEvent.click(detailsLink);
 
-    const homeLink = screen.getByRole("link", { name: /home/i });
+    const homeLink = screen.getByRole("link", { name: /Stock Exchange/i });
 
     fireEvent.click(homeLink);
 

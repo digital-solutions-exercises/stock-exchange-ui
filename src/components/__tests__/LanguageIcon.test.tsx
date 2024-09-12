@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import LanguageIcon from "../LanguageIcon";
 import LanguageContext from "../../context/LanguageContext";
-import { languages } from "../../constants/languages";
+import { languages } from "../../config/languages";
 
 const mockSetLanguage = jest.fn();
 

@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Header from "../Header";
 import ThemeContext from "../../context/ThemeContext";
 import LanguageContext from "../../context/LanguageContext";
-import { languages } from "../../constants/languages";
+import { languages } from "../../config/languages";
 
 jest.mock("../ThemeIcon", () => () => <div data-testid="theme-icon-id"></div>);
 jest.mock("react-i18next", () => ({

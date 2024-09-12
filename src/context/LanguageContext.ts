@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { LanguageType } from "../constants/languages";
+import { LanguageType } from "../config/languages";
 
 interface LanguageContextType {
   language: LanguageType;

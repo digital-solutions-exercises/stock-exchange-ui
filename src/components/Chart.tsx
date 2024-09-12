@@ -9,11 +9,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import {
-  chartConfig,
-  FilterType,
-  ResolutionType,
-} from "../constants/chartConfig";
+import { chartConfig, FilterType, ResolutionType } from "../config/chart";
 import ChartFilter from "./ChartFilter";
 import ThemeContext from "../context/ThemeContext";
 import { convertDateToUnixTimestamp } from "../utils/handleDates.util";

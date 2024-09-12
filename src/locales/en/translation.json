@@ -1,11 +1,36 @@
 {
     "pages": {
-        "HomePage": {}
+        "HomePage": {},
+        "DetailsPage": {
+            "blocks": {
+                "why": {
+                    "title": "Why invest with ",
+                    "titleSuffix": "Stock Exchange?",
+                    "content": "Looking for a profitable, expert-backed investment opportunity? At Stock Exchange, we not only have the experience, numbers, and financial expertise to guide you, but we also offer something unique: the power to invest on your own terms—without paying hefty fees to intermediaries."
+                },
+                "how": {
+                    "title": "How Does It Work?",
+                    "content": "We’ll show you how to create and manage your own investment profile directly on specific stock exchange platform. You’ll have full control—buy and sell whenever you want. The only fees you’ll pay are those to the stock exchange itself, with no middlemen taking a cut."
+                },
+                "start": {
+                    "title": "Get Started with Us",
+                    "content": "Reach us via email to schedule a call, and we’ll walk you through setting up your Stock Exchange account. From navigating the platform to making your first deposit, and offering personalized investment suggestions, we’re here to ensure your journey to investing success is smooth and informed."
+                },
+                "benefits": {
+                    "title": "Exclusive Benefits",
+                    "content": "In addition to independence, we offer tailored recommendations on what to buy, when to buy, and how to shape your investment strategy. However, the choice is always yours—no pressure to follow our guidance."
+                },
+                "keys": {
+                    "title": "Keys to Successful Investment",
+                    "content": "A successful investment strategy goes beyond simple buying and selling. We emphasize diversification, staying informed through top investors, market news, and global political updates, helping you refine your intuition for better decision-making."
+                }
+            }
+        }
     },
     "components": {
         "Header": {
-            "homeLink": "Home",
-            "detailsLink": "Details"
+            "homeLink": "Stock Exchange",
+            "detailsLink": "Invest with Confidence"
         },
         "Details": {
             "detailList": {
@@ -22,6 +47,9 @@
             "input": {
                 "placeholder": "Search stock"
             }
+        },
+        "Slider": {
+            "readMore": "Read more"
         }
     }
 }
