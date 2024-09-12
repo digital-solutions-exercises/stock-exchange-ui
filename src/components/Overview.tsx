@@ -1,6 +1,21 @@
+import { FC } from "react";
 import Card from "./Card";
 
-const Overview = ({ symbol, price, change, changePercent, currency }: any) => {
+interface Props {
+  symbol: string;
+  price: number | null;
+  change: number | null;
+  changePercent: number | null;
+  currency: string | null;
+}
+
+const Overview: FC<Props> = ({
+  symbol,
+  price,
+  change,
+  changePercent,
+  currency,
+}) => {
   return (
     <Card>
       <span className="absolute left-4 top-4 text-neutral-400 sm:text-lg xl:text-xl 2xl:text-2xl">
@@ -15,7 +30,7 @@ const Overview = ({ symbol, price, change, changePercent, currency }: any) => {
         </span>
         <span
           className={`text-sm sm:text-lg xl:text-xl 2xl:text-2xl ${
-            change > 0 ? "text-lime-500" : "text-red-500"
+            change && change > 0 ? "text-lime-500" : "text-red-500"
           }`}
         >
           {change && change.toFixed(2)}{" "}

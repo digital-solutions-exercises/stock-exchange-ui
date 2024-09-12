@@ -1,8 +1,8 @@
-import { useContext } from "react";
+import { useContext, FC } from "react";
 import { MoonIcon } from "@heroicons/react/24/solid";
 import ThemeContext from "../context/ThemeContext";
 
-const ThemeIcon = () => {
+const ThemeIcon: FC = () => {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext)!;
   const toggleDarkTheme = () => {
     setDarkTheme(!darkTheme);

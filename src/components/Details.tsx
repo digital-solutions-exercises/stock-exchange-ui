@@ -1,13 +1,18 @@
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import Card from "./Card";
 import ThemeContext from "../context/ThemeContext";
 import { useTranslation } from "react-i18next";
+import { YahooQuote } from "../types/yahooData.types";
 
-const Details = ({ details }: any) => {
+interface Props {
+  details: YahooQuote & { industry: string | null };
+}
+
+const Details: FC<Props> = ({ details }) => {
   const { t } = useTranslation();
   const { darkTheme } = useContext(ThemeContext)!;
 
-  const detailList: any = {
+  const detailList: { [key: string]: string } = {
     longName: t("components.Details.detailList.longName"),
     region: t("components.Details.detailList.region"),
     currency: t("components.Details.detailList.currency"),
@@ -20,22 +25,34 @@ const Details = ({ details }: any) => {
   };
 
   const convertToBillion = (number: number) => {
-    return (number / 1000000000).toFixed(2);
+    if (number === null || number === undefined || isNaN(number)) {
+      return "-";
+    }
+    return (number / 1000000000).toFixed(2) + "B";
+  };
+
+  const convertToLocalDate = (date: string) => {
+    if (
+      date === null ||
+      date === undefined ||
+      isNaN(new Date(date).getTime())
+    ) {
+      return "-";
+    }
+    return new Date(date).toLocaleDateString();
   };
 
   const formatValue = (item: string) => {
     if (item === "marketCap") {
-      return details[item] !== undefined
-        ? `${convertToBillion(details[item])}B`
-        : "-";
+      return convertToBillion(details[item]!);
     }
     if (item === "firstTradeDateMilliseconds") {
-      return details[item] ? new Date(details[item]).toLocaleDateString() : "-";
+      return convertToLocalDate(details[item]!);
     }
     if (item === "longName") {
       return details.longName || details.shortName || "-";
     }
-    return details[item] || "-";
+    return (details as any)[item] || "-";
   };
 
   return (

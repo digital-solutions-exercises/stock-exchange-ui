@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { FC, useContext, useState } from "react";
 import ThemeIcon from "./ThemeIcon";
 import { Link } from "react-router-dom";
 import ThemeContext from "../context/ThemeContext";
@@ -6,7 +6,7 @@ import LanguageIcon from "./LanguageIcon";
 import { useTranslation } from "react-i18next";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 
-const Header = () => {
+const Header: FC = () => {
   const { t } = useTranslation();
   const [activeLink, setActiveLink] = useState("/");
   const [isMenuOpen, setIsMenuOpen] = useState(false);

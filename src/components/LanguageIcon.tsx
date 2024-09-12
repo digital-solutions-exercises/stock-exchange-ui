@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
-import { languages } from "../config/languages";
+import { FC, useContext, useState } from "react";
+import { languages, LanguageType } from "../config/languages";
 import LanguageContext from "../context/LanguageContext";
 
-const LanguageIcon = () => {
+const LanguageIcon: FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { language, setLanguage } = useContext(LanguageContext)!;
 
@@ -10,7 +10,7 @@ const LanguageIcon = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const selectLanguage = (language: any) => {
+  const selectLanguage = (language: LanguageType) => {
     setLanguage(language);
     setIsDropdownOpen(false);
   };

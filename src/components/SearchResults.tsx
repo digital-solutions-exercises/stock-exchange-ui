@@ -1,15 +1,14 @@
-import { useContext } from "react";
+import { useContext, FC } from "react";
 import ThemeContext from "../context/ThemeContext";
 import StockContext from "../context/StockContext";
 import { YahooSearchQuote } from "../types/yahooData.types";
 
-const SearchResults = ({
-  results,
-  setBestMatches,
-}: {
+interface Props {
   results: YahooSearchQuote[];
-  setBestMatches: any;
-}) => {
+  setBestMatches: (searchQuotes: YahooSearchQuote[]) => void;
+}
+
+const SearchResults: FC<Props> = ({ results, setBestMatches }) => {
   const { darkTheme } = useContext(ThemeContext)!;
   const { setStockSymbol } = useContext(StockContext)!;
 

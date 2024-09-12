@@ -1,4 +1,14 @@
-export const slides = (language: "en" | "sk" = "en") => [
+export type Slide = {
+  id: number;
+  imageUrl: string;
+  title: string;
+  description: string;
+  source?: string;
+  author?: string;
+  date?: number;
+};
+
+export const slides = (language: "en" | "sk" = "en"): Slide[] => [
   {
     id: 1,
     imageUrl: "https://pagedone.io/asset/uploads/1696244059.png",

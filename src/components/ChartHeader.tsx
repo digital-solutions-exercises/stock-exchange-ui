@@ -1,6 +1,11 @@
+import { FC } from "react";
 import Search from "./Search";
 
-const ChartHeader = ({ name }: any) => {
+interface Props {
+  name: string | null;
+}
+
+const ChartHeader: FC<Props> = ({ name }) => {
   return (
     <>
       <div

@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, FC } from "react";
 import ThemeContext from "../context/ThemeContext";
-import { slides } from "../constants/blogData";
+import { Slide, slides } from "../constants/blogData";
 import LanguageContext from "../context/LanguageContext";
 import { useTranslation } from "react-i18next";
 
-const Slider: React.FC = () => {
+const Slider: FC = () => {
   const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const { darkTheme } = useContext(ThemeContext)!;
@@ -80,7 +80,7 @@ const Slider: React.FC = () => {
         className="w-full flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {translatedSlides.map((slide: any) => (
+        {translatedSlides.map((slide: Slide) => (
           <div key={slide.id} className="w-full flex-shrink-0">
             <div className="p-4 relative">
               <img

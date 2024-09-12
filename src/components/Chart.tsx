@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { FC, useContext, useEffect, useMemo, useState } from "react";
 import { createDate } from "../utils/handleDates.util";
 import Card from "./Card";
 import {
@@ -17,7 +17,7 @@ import { getYahooHistoryData } from "../api/yahooData";
 import StockContext from "../context/StockContext";
 import { YahooHistoryDataRow } from "../types/yahooData.types";
 
-const Chart = () => {
+const Chart: FC = () => {
   const [data, setData] = useState<{ value: string; date: string }[]>([]);
   const [filter, setFilter] = useState<FilterType>("1Y");
 
@@ -89,7 +89,7 @@ const Chart = () => {
 
   return (
     <Card>
-      <ul className="flex absolute top-2 right-2 z-40">
+      <ul className="flex absolute top-2 right-2 z-30">
         {(Object.keys(chartConfig) as FilterType[]).map((item: FilterType) => {
           return (
             <li key={item}>

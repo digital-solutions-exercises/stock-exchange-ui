@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState, FC, KeyboardEvent } from "react";
 import { XMarkIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import SearchResults from "./SearchResults";
 import ThemeContext from "../context/ThemeContext";
@@ -6,7 +6,7 @@ import { getYahooSearchQuotes } from "../api/yahooData";
 import { YahooSearchQuote } from "../types/yahooData.types";
 import { useTranslation } from "react-i18next";
 
-const Search = () => {
+const Search: FC = () => {
   const { t } = useTranslation();
   const [input, setInput] = useState("");
   const [bestMatches, setBestMatches] = useState<YahooSearchQuote[]>([]);
@@ -33,7 +33,7 @@ const Search = () => {
   return (
     <div
       data-testid="search-component-id"
-      className={`flex items-center my-4 border-2 rounded-md relative w-full sm:w-96 ${darkTheme ? "bg-gray-900 border-gray-800" : "bg-white border-neutral-200"}`}
+      className={`flex items-center my-4 border-2 rounded-md relative w-full z-40 sm:w-96 ${darkTheme ? "bg-gray-900 border-gray-800" : "bg-white border-neutral-200"}`}
     >
       <input
         type="text"
@@ -43,7 +43,7 @@ const Search = () => {
         onChange={(event) => {
           setInput(event.target.value);
         }}
-        onKeyDown={(event: React.KeyboardEvent) => {
+        onKeyDown={(event: KeyboardEvent) => {
           if (event.key === "Enter") {
             updateBestMatches();
           }

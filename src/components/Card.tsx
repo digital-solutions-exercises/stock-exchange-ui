@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import ThemeContext from "../context/ThemeContext";
 
-const Card = ({ children }: any) => {
+const Card: FC<any> = ({ children }) => {
   const { darkTheme } = useContext(ThemeContext)!;
 
   return (

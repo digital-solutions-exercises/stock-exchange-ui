@@ -1,4 +1,12 @@
-const ChartFilter = ({ text, active, onClick }: any) => {
+import { FC } from "react";
+
+interface Props {
+  text: string;
+  active: boolean;
+  onClick: () => void;
+}
+
+const ChartFilter: FC<Props> = ({ text, active, onClick }: any) => {
   return (
     <button
       onClick={onClick}
