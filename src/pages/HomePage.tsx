@@ -50,10 +50,10 @@ const HomePage = () => {
       <div className="col-span-3 row-span-1 flex justify-start items-center">
         <ChartHeader name={quote.longName || quote.shortName} />
       </div>
-      <div className="col-span-3 sm:col-span-2 row-span-7">
+      <div className="col-span-3 lg:col-span-2 row-span-7">
         <Chart />
       </div>
-      <div className="col-span-3 sm:col-span-1 row-span-2">
+      <div className="col-span-3 lg:col-span-1 row-span-2">
         <Overview
           symbol={stockSymbol}
           price={quote.regularMarketPrice}
@@ -62,7 +62,7 @@ const HomePage = () => {
           currency={quote.currency}
         />
       </div>
-      <div className="col-span-3 sm:col-span-1 row-span-5">
+      <div className="col-span-3 lg:col-span-1 row-span-5">
         <Details
           details={{ ...quote, industry: stockDetails.assetProfile.industry }}
         />

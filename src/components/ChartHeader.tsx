@@ -7,7 +7,7 @@ const ChartHeader = ({ name }: any) => {
         data-testid="chart-header-component-id"
         className="flex flex-col justify-start sm:items-center sm:flex-row sm:gap-6"
       >
-        <h1 className="text-2xl sm:text-5xl">{name}</h1>
+        <h1 className="text-2xl lg:text-5xl">{name}</h1>
         <Search />
       </div>
     </>

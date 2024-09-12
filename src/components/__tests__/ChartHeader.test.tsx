@@ -10,7 +10,7 @@ describe("ChartHeader.tsx", () => {
 
     const headingElement = screen.getByRole("heading", { name: headerName });
     expect(headingElement).toBeInTheDocument();
-    expect(headingElement).toHaveClass("text-2xl sm:text-5xl");
+    expect(headingElement).toHaveClass("text-2xl lg:text-5xl");
   });
 
   test("renders the Search component", () => {

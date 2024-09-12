@@ -29,9 +29,7 @@ const Header = () => {
         <div className="sm:hidden h-6 w-6">
           <Bars3Icon
             data-testid="header-menu-icon-id"
-            className={`h-8 w-8 text-black ${
-              darkTheme ? "text-white" : ""
-            }`}
+            className={`h-8 w-8 text-black ${darkTheme ? "text-white" : ""}`}
             onClick={toggleMenu}
           />
         </div>
@@ -48,9 +46,7 @@ const Header = () => {
           <Link
             to="/"
             className={
-              activeLink === "/"
-                ? ""
-                : "text-indigo-300 hover:text-indigo-500"
+              activeLink === "/" ? "" : "text-indigo-300 hover:text-indigo-500"
             }
             onClick={() => {
               setActiveLink("/");
