@@ -11,10 +11,14 @@
     "lint-fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.8",
     "@heroicons/react": "^2.1.5",
     "@types/swiper": "^6.0.0",
     "axios": "^1.7.5",
+    "graphql": "^16.9.0",
     "i18next": "^23.14.0",
+    "install": "^0.13.0",
+    "npm": "^10.8.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-i18next": "^15.0.1",

@@ -9,13 +9,14 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { GET_YAHOO_HISTORY_DATA } from "../graphql/yahooData";
 import { chartConfig, FilterType, ResolutionType } from "../config/chart";
 import ChartFilter from "./ChartFilter";
 import ThemeContext from "../context/ThemeContext";
 import { convertDateToUnixTimestamp } from "../utils/handleDates.util";
-import { getYahooHistoryData } from "../api/yahooData";
 import StockContext from "../context/StockContext";
 import { YahooHistoryDataRow } from "../types/yahooData.types";
+import { useLazyQuery } from "@apollo/client";
 
 const Chart: FC = () => {
   const [data, setData] = useState<{ value: string; date: string }[]>([]);
@@ -48,42 +49,85 @@ const Chart: FC = () => {
 
     const margin = (max - min) * 0.1;
 
-    return [min - margin, max + margin];
+    const yMin = (min - margin).toFixed(2);
+    const yMax = (max + margin).toFixed(2);
+
+    return [Number(yMin), Number(yMax)];
   };
 
+  const persistData = (
+    filter: FilterType,
+    data: { value: string; date: string }[],
+  ) => {
+    localStorage.setItem(
+      `chartData_${filter}_${stockSymbol}`,
+      JSON.stringify(data),
+    );
+  };
+
+  const loadPersistedData = (filter: FilterType) => {
+    const storedData = localStorage.getItem(
+      `chartData_${filter}_${stockSymbol}`,
+    );
+    return storedData ? JSON.parse(storedData) : null;
+  };
+
+  const getDateRange = () => {
+    const { days, weeks, months, years } = chartConfig[filter];
+
+    const endDate = new Date();
+    const startDate = createDate(endDate, -days, -weeks, -months, -years);
+
+    const startTimestampUnix = convertDateToUnixTimestamp(startDate);
+    const endTimestampUnix = convertDateToUnixTimestamp(endDate);
+
+    return { startTimestampUnix, endTimestampUnix };
+  };
+
+  const [fetchYahooHistoryData, { loading, error, data: historicalData }] =
+    useLazyQuery(GET_YAHOO_HISTORY_DATA);
+
+  if (error) {
+    console.log(error);
+  }
+
   useEffect(() => {
-    const getDateRange = () => {
-      const { days, weeks, months, years } = chartConfig[filter];
+    const persistedData = loadPersistedData(filter);
 
-      const endDate = new Date();
-      const startDate = createDate(endDate, -days, -weeks, -months, -years);
-
-      const startTimestampUnix = convertDateToUnixTimestamp(startDate);
-      const endTimestampUnix = convertDateToUnixTimestamp(endDate);
-
-      return { startTimestampUnix, endTimestampUnix };
-    };
+    if (persistedData) {
+      setData(persistedData);
+      return;
+    }
 
     const updateChartData = async () => {
       try {
         const { startTimestampUnix, endTimestampUnix } = getDateRange();
         const resolution = chartConfig[filter].resolution as ResolutionType;
 
-        const result = await getYahooHistoryData(
-          stockSymbol,
-          resolution,
-          startTimestampUnix,
-          endTimestampUnix,
-        );
-        setData(formatData(result));
-      } catch (error) {
+        await fetchYahooHistoryData({
+          variables: {
+            stockSymbol,
+            resolution,
+            startDate: startTimestampUnix,
+            endDate: endTimestampUnix,
+          },
+        });
+      } catch (err) {
         setData([]);
-        console.log(error);
+        console.log(err);
       }
     };
 
     updateChartData();
   }, [stockSymbol, filter]);
+
+  useEffect(() => {
+    if (historicalData) {
+      const formattedData = formatData(historicalData.getHistoricalData);
+      setData(formattedData);
+      persistData(filter, formattedData);
+    }
+  }, [historicalData]);
 
   const yAxisDomain = useMemo(() => calculateDomain(data), [data]);
 

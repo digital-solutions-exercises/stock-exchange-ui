@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM, { Root } from "react-dom/client";
 import App from "../App";
 import reportWebVitals from "../reportWebVitals";
+import { ApolloProvider } from "@apollo/client";
 
 jest.mock("../reportWebVitals");
 
@@ -39,7 +40,9 @@ describe("index.tsx", () => {
     expect(ReactDOM.createRoot).toHaveBeenCalledWith(rootElement);
     expect(mockRender).toHaveBeenCalledWith(
       <React.StrictMode>
-        <App />
+        <ApolloProvider client={expect.anything()}>
+          <App />
+        </ApolloProvider>
       </React.StrictMode>,
     );
     expect(reportWebVitals).toBeDefined();

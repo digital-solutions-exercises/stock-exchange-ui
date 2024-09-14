@@ -1,12 +1,18 @@
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Chart from "../Chart";
 import ThemeContext from "../../context/ThemeContext";
 import StockContext from "../../context/StockContext";
-import { getYahooHistoryData } from "../../api/yahooData";
 import { mockYahooHistoryData } from "../../mocks/yahooMockData.mocks";
+import { GET_YAHOO_HISTORY_DATA } from "../../graphql/yahooData";
+import { useLazyQuery } from "@apollo/client";
 
-jest.mock("../../api/yahooData", () => ({
-  getYahooHistoryData: jest.fn(),
+const mockedYahooHistoryData = {
+  getHistoricalData: mockYahooHistoryData,
+};
+
+jest.mock("@apollo/client", () => ({
+  ...jest.requireActual("@apollo/client"),
+  useLazyQuery: jest.fn(),
 }));
 
 jest.mock("recharts", () => {
@@ -26,7 +32,9 @@ jest.mock("recharts", () => {
 });
 
 describe("Chart.tsx", () => {
-  const renderChart = (darkTheme: boolean, stockSymbol: string) => {
+  const mockLazyQuery = useLazyQuery as jest.Mock;
+
+  const renderChart = (darkTheme = false, stockSymbol = "AAPL") => {
     render(
       <ThemeContext.Provider value={{ darkTheme, setDarkTheme: jest.fn() }}>
         <StockContext.Provider
@@ -38,74 +46,119 @@ describe("Chart.tsx", () => {
     );
   };
 
-  test("renders filter buttons", async () => {
-    (getYahooHistoryData as jest.Mock).mockResolvedValue(mockYahooHistoryData);
+  beforeEach(() => {
+    jest.clearAllMocks();
+    localStorage.clear();
+  });
 
-    await waitFor(() => renderChart(false, "AAPL"));
+  test("renders filter buttons", async () => {
+    const fetchYahooHistoryDataMock = jest.fn();
+
+    mockLazyQuery.mockReturnValue([
+      fetchYahooHistoryDataMock,
+      { loading: false, data: mockedYahooHistoryData },
+    ]);
+
+    renderChart();
 
     const filterButton = screen.getByText("1Y");
     expect(filterButton).toBeInTheDocument();
   });
 
-  test("fetches chart data", async () => {
-    (getYahooHistoryData as jest.Mock).mockResolvedValue(mockYahooHistoryData);
-
-    await waitFor(() => renderChart(false, "AAPL"));
-
-    await waitFor(() => {
-      expect(getYahooHistoryData).toHaveBeenCalledWith(
-        "AAPL",
-        "1wk",
-        expect.any(Number),
-        expect.any(Number),
-      );
-    });
-  });
-
-  test("handles API errors gracefully", async () => {
-    const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {});
-    (getYahooHistoryData as jest.Mock).mockRejectedValue(
-      new Error("API error"),
-    );
-
-    await waitFor(() => renderChart(false, "AAPL"));
-
-    await waitFor(() => {
-      expect(screen.queryByText("150.00")).not.toBeInTheDocument();
-    });
-
-    await waitFor(() => {
-      expect(screen.queryByText("155.00")).not.toBeInTheDocument();
-    });
-
-    expect(consoleSpy).toHaveBeenCalledWith(expect.any(Error));
-    consoleSpy.mockRestore();
-  });
-
   test("set filter when is changed", async () => {
-    (getYahooHistoryData as jest.Mock).mockResolvedValue(mockYahooHistoryData);
+    const fetchYahooHistoryDataMock = jest.fn();
 
-    await waitFor(() => renderChart(false, "AAPL"));
+    mockLazyQuery.mockReturnValue([
+      fetchYahooHistoryDataMock,
+      { loading: false, data: mockedYahooHistoryData },
+    ]);
 
-    await waitFor(() => {
-      expect(getYahooHistoryData).toHaveBeenCalledWith(
-        "AAPL",
-        "1wk",
-        expect.any(Number),
-        expect.any(Number),
-      );
+    renderChart();
+
+    expect(fetchYahooHistoryDataMock).toHaveBeenNthCalledWith(1, {
+      variables: {
+        stockSymbol: "AAPL",
+        resolution: "1wk",
+        startDate: expect.any(Number),
+        endDate: expect.any(Number),
+      },
     });
 
-    const filterButton = screen.getByText("3M");
+    const filterButton = screen.getByText("1W");
     fireEvent.click(filterButton);
 
-    await waitFor(() => {
-      expect(getYahooHistoryData).toHaveBeenCalledWith(
-        "AAPL",
-        "1wk",
-        expect.any(Number),
-        expect.any(Number),
-      );
+    expect(fetchYahooHistoryDataMock).toHaveBeenNthCalledWith(2, {
+      variables: {
+        stockSymbol: "AAPL",
+        resolution: "1d",
+        startDate: expect.any(Number),
+        endDate: expect.any(Number),
+      },
     });
+  });
+
+  test("fetches data from localStorage if it exists", async () => {
+    const persistedData = JSON.stringify(mockYahooHistoryData);
+    localStorage.setItem("chartData_1Y_AAPL", persistedData);
+
+    const fetchYahooHistoryDataMock = jest.fn();
+
+    mockLazyQuery.mockReturnValue([
+      fetchYahooHistoryDataMock,
+      { loading: false, data: undefined },
+    ]);
+
+    renderChart();
+
+    expect(fetchYahooHistoryDataMock).not.toHaveBeenCalled();
+  });
+
+  test("fetches chart data using useLazyQuery and fetchYahooHistoryData", async () => {
+    const fetchYahooHistoryDataMock = jest.fn();
+
+    mockLazyQuery.mockReturnValue([
+      fetchYahooHistoryDataMock,
+      { loading: false, data: mockedYahooHistoryData },
+    ]);
+
+    renderChart();
+
+    expect(mockLazyQuery).toHaveBeenCalledWith(GET_YAHOO_HISTORY_DATA);
+
+    expect(fetchYahooHistoryDataMock).toHaveBeenCalledWith({
+      variables: {
+        stockSymbol: "AAPL",
+        resolution: "1wk",
+        startDate: expect.any(Number),
+        endDate: expect.any(Number),
+      },
+    });
+
+    const storedData = localStorage.getItem("chartData_1Y_AAPL");
+    expect(storedData).toBeDefined();
+    expect(JSON.parse(storedData!)).toEqual(
+      mockYahooHistoryData.map(({ close, date }) => {
+        return {
+          value: close.toFixed(2),
+          date: new Date(date).toLocaleDateString(),
+        };
+      }),
+    );
+  });
+
+  test("handles graphql errors gracefully", async () => {
+    const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {});
+    const fetchYahooHistoryDataMock = jest.fn();
+
+    mockLazyQuery.mockReturnValue([
+      fetchYahooHistoryDataMock,
+      { loading: false, error: new Error("GraphQL error"), data: undefined },
+    ]);
+
+    renderChart();
+
+    expect(consoleSpy).toHaveBeenCalledWith(Error("GraphQL error"));
+
+    consoleSpy.mockRestore();
   });
 });
