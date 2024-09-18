@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./pages/Root";
 import HomePage from "./pages/HomePage";
 import DetailsPage from "./pages/DetailsPage";
+import ContactUsPage from "./pages/ContactUsPage";
 import ThemeContext from "./context/ThemeContext";
 import StockContext from "./context/StockContext";
 import LanguageContext from "./context/LanguageContext";
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/details",
         element: <DetailsPage />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUsPage />,
       },
     ],
   },

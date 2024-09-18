@@ -1,21 +1,19 @@
 import { render, screen } from "@testing-library/react";
 import DetailsPage from "../DetailsPage";
 import ThemeContext from "../../context/ThemeContext";
-
-jest.mock("react-i18next", () => ({
-  useTranslation: () => ({
-    t: (key: string) => key,
-  }),
-}));
+import { I18nextProvider } from "react-i18next";
+import i18n from "../../i18n";
 
 jest.mock("../../components/Slider", () => () => <div>Mocked Slider</div>);
 
 describe("DetailsPage.tsx", () => {
   const renderDetailsPage = (darkTheme = false) => {
     return render(
+      <I18nextProvider i18n={i18n}>
       <ThemeContext.Provider value={{ darkTheme, setDarkTheme: jest.fn() }}>
         <DetailsPage />
       </ThemeContext.Provider>,
+      </I18nextProvider>
     );
   };
 
@@ -27,19 +25,19 @@ describe("DetailsPage.tsx", () => {
     renderDetailsPage(false);
 
     expect(
-      screen.getByText("pages.DetailsPage.blocks.why.title"),
+      screen.getByText(i18n.t("pages.DetailsPage.blocks.why.title").trim()),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("pages.DetailsPage.blocks.benefits.title"),
+      screen.getByText(i18n.t("pages.DetailsPage.blocks.benefits.title")),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("pages.DetailsPage.blocks.keys.title"),
+      screen.getByText(i18n.t("pages.DetailsPage.blocks.keys.title")),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("pages.DetailsPage.blocks.how.title"),
+      screen.getByText(i18n.t("pages.DetailsPage.blocks.how.title")),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("pages.DetailsPage.blocks.start.title"),
+      screen.getByText(i18n.t("pages.DetailsPage.blocks.start.title")),
     ).toBeInTheDocument();
     expect(screen.getByText("Mocked Slider")).toBeInTheDocument();
 
@@ -51,19 +49,19 @@ describe("DetailsPage.tsx", () => {
     renderDetailsPage(true);
 
     expect(
-      screen.getByText("pages.DetailsPage.blocks.why.title"),
+      screen.getByText(i18n.t("pages.DetailsPage.blocks.why.title").trim()),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("pages.DetailsPage.blocks.benefits.title"),
+      screen.getByText(i18n.t("pages.DetailsPage.blocks.benefits.title")),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("pages.DetailsPage.blocks.keys.title"),
+      screen.getByText(i18n.t("pages.DetailsPage.blocks.keys.title")),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("pages.DetailsPage.blocks.how.title"),
+      screen.getByText(i18n.t("pages.DetailsPage.blocks.how.title")),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("pages.DetailsPage.blocks.start.title"),
+      screen.getByText(i18n.t("pages.DetailsPage.blocks.start.title")),
     ).toBeInTheDocument();
     expect(screen.getByText("Mocked Slider")).toBeInTheDocument();
 

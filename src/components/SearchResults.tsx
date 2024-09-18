@@ -14,7 +14,7 @@ const SearchResults: FC<Props> = ({ results, setBestMatches }) => {
 
   return (
     <ul
-      className={`absolute top-12 border w-full rounded-md h-64 overflow-y-scroll ${darkTheme ? "bg-gray-900 border-gray-800 custom-scrollbar custom-scrollbar-dark" : "bg-white border-neutral-200 custom-scrollbar"}`}
+      className={`absolute top-12 border w-full rounded-md h-64 overflow-y-scroll custom-scrollbar ${darkTheme ? "bg-gray-900 border-gray-800 custom-scrollbar-dark" : "bg-white border-neutral-200"}`}
     >
       {results.map((item) => {
         return (

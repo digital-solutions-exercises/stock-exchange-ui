@@ -25,12 +25,26 @@
                     "content": "Úspešná investičná stratégia presahuje jednoduchý nákup a predaj. Kladieme dôraz na diverzifikáciu, informovanosť prostredníctvom špičkových investorov, trhových správ a globálnych politických aktualizácií, čo vám pomôže vylepšiť vašu intuíciu pre lepšie rozhodovania."
                 }
             }
+        },
+        "ContactUsPage": {
+            "majorHeader": "S investovaním sa neoplatí čakať, neváhaj a kontaktuj nás",
+            "description": {
+                "1": " • Ak ťa zaujali všetky výhody investovania, a najmä možnosť investovať priamo na burze bez potreby platenia poplatkov tretím stranám, neváhaj a kontaktuj nás.",
+                "2": " • Prostredníctvom videohovoru ti vysvetlíme ako si vytvoriť účet priamo na obchodnej platforme <0>Etoro</0>,",
+                "3": " • Vo vačšine prípadov je medzi investorom a obchodnou platformou ešte banka alebo iná finančná inštitúcia, ktorá si berie svoj podiel. S nami máš možnosť za jednorázový poplatok tento medzičlánok obísť, čo pri vačších investíciách vie ušetriť stovky až tisícky eur na poplatkoch,",
+                "4": " • Poradíme ti do čoho sa oplatí investovať, či a ako sa zisky z jednotlivých investícií musia daniť, v akej výške a kedy je možné robiť nákup/predaj,",
+                "5": " • Dlhodobým investovaním si vytváraš finančnú rezervu, eliminuješ infláciu, vytváraš vlastný kapitál a sadíš strom, z ktorého neskôr bude úroda,",
+                "6": " • Finančné inštitúcie, poradcovia a banky majú pravdu že investovanie je vhodná forma pre zvýšenie svojho kapitálu. Pýtajú si však za to príliš veľa,",
+                "7": " • My len poskytujeme informácie, no kde, kedy a koľko investuješ, je úplne na tebe. Rozhodnutie je vždy vo tvojich rukách."
+            },
+            "sendButton": "Poslať Správu"
         }
     },
     "components": {
         "Header": {
             "homeLink": "Stock Exchange",
             "detailsLink": "Investujte bez poplatkov",
+            "contactUsLink": "Contact Us",
             "logo": "Stock Exchange"
         },
         "Details": {

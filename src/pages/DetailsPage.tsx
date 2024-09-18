@@ -9,7 +9,7 @@ const DetailsPage = () => {
 
   return (
     <div
-      className={`h-full lg:h-[calc(100vh-80px)] grid grid-cols-3 lg:grid-rows-8 lg:auto-rows-fr gap-3 sm:gap-6 p-6 sm:pl-10 sm:pr-10 ${
+      className={`h-full lg:h-[calc(100vh-80px)] grid grid-cols-3 lg:grid-rows-8 lg:auto-rows-fr gap-3 sm:gap-6 p-6 sm:p-10 ${
         darkTheme ? "bg-gray-900 text-gray-300" : "bg-neutral-100"
       }`}
       data-testid="details-page-id"

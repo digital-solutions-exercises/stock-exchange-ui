@@ -69,6 +69,20 @@ const Header: FC = () => {
           >
             {t("components.Header.detailsLink")}
           </Link>
+          <Link
+            to="/contact-us"
+            className={
+              activeLink === "/contact-us"
+                ? ""
+                : "text-indigo-300 hover:text-indigo-500"
+            }
+            onClick={() => {
+              setActiveLink("/contact-us");
+              setIsMenuOpen(false);
+            }}
+          >
+            {t("components.Header.contactUsLink")}
+          </Link>
         </div>
 
         <div className="ml-auto flex flex-row gap-3 sm:gap-6">
