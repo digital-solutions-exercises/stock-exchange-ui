@@ -11,7 +11,7 @@ describe("ContactUsPage.tsx", () => {
         <ThemeContext.Provider value={{ darkTheme, setDarkTheme: jest.fn() }}>
           <ContactUsPage />
         </ThemeContext.Provider>
-      </I18nextProvider>
+      </I18nextProvider>,
     );
   };
 
@@ -19,10 +19,10 @@ describe("ContactUsPage.tsx", () => {
     renderContactUsPage();
 
     expect(
-      screen.getByText(i18n.t("pages.ContactUsPage.majorHeader"))
+      screen.getByText(i18n.t("pages.ContactUsPage.majorHeader")),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(i18n.t("pages.ContactUsPage.sendButton"))
+      screen.getByText(i18n.t("pages.ContactUsPage.sendButton")),
     ).toBeInTheDocument();
   });
 

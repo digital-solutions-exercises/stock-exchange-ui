@@ -39,7 +39,7 @@ describe("Slider.tsx", () => {
   test("changes to the next slide when 'next' button is clicked", () => {
     renderSlider();
 
-    const nextButton = screen.getByTestId("next-button-id");
+    const nextButton = screen.getByTestId("next-button-id-1");
 
     fireEvent.click(nextButton);
 
@@ -53,8 +53,8 @@ describe("Slider.tsx", () => {
   test("changes to the previous slide when 'previous' button is clicked", () => {
     renderSlider();
 
-    const prevButton = screen.getByTestId("previous-button-id");
-    const nextButton = screen.getByTestId("next-button-id");
+    const prevButton = screen.getByTestId("previous-button-id-2");
+    const nextButton = screen.getByTestId("next-button-id-1");
 
     fireEvent.click(nextButton);
     fireEvent.click(prevButton);
@@ -69,7 +69,7 @@ describe("Slider.tsx", () => {
   test("returns to first slide once go through all slides", () => {
     renderSlider();
 
-    const nextButton = screen.getByTestId("next-button-id");
+    const nextButton = screen.getByTestId("next-button-id-3");
 
     fireEvent.click(nextButton);
     fireEvent.click(nextButton);

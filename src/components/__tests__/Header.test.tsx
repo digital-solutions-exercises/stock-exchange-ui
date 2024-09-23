@@ -80,10 +80,17 @@ describe("Header.tsx", () => {
 
     fireEvent.click(detailsLink);
 
-    expect(detailsLink).not.toHaveClass("text-indigo-300");
+    expect(detailsLink).toHaveClass("text-indigo-600");
+  });
 
-    const homeLink = screen.getByText("components.Header.homeLink");
-    expect(homeLink).toHaveClass("text-indigo-300");
+  test("applies active class to Contact Us link when clicked", () => {
+    renderHeader();
+
+    const contactUsLink = screen.getByText("components.Header.contactUsLink");
+
+    fireEvent.click(contactUsLink);
+
+    expect(contactUsLink).toHaveClass("text-indigo-600");
   });
 
   test("renders the ThemeIcon component", () => {

@@ -8,7 +8,7 @@ import { Bars3Icon } from "@heroicons/react/24/solid";
 
 const Header: FC = () => {
   const { t } = useTranslation();
-  const [activeLink, setActiveLink] = useState("/");
+  const [activeLink, setActiveLink] = useState("/"); // TO DO put this into context
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { darkTheme } = useContext(ThemeContext)!;
 
@@ -46,7 +46,9 @@ const Header: FC = () => {
           <Link
             to="/"
             className={
-              activeLink === "/" ? "" : "text-indigo-300 hover:text-indigo-500"
+              activeLink === "/"
+                ? "text-indigo-600 font-bold"
+                : "text-indigo-300 hover:text-indigo-500"
             }
             onClick={() => {
               setActiveLink("/");
@@ -59,7 +61,7 @@ const Header: FC = () => {
             to="/details"
             className={
               activeLink === "/details"
-                ? ""
+                ? "text-indigo-600 font-bold"
                 : "text-indigo-300 hover:text-indigo-500"
             }
             onClick={() => {
@@ -73,7 +75,7 @@ const Header: FC = () => {
             to="/contact-us"
             className={
               activeLink === "/contact-us"
-                ? ""
+                ? "text-indigo-600 font-bold"
                 : "text-indigo-300 hover:text-indigo-500"
             }
             onClick={() => {
