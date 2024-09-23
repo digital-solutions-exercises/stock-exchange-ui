@@ -49,7 +49,7 @@ const DetailsPage = () => {
       className={`h-full md:h-[calc(100vh-80px)] grid grid-cols-[3fr_4fr] md:grid-rows-[2fr_1fr] ${darkTheme ? "bg-gray-900 text-gray-300" : "bg-neutral-100"}`}
       data-testid="details-page-id"
     >
-      <div className="col-span-2 md:col-span-1 md:row-span-1 px-10 pt-10">
+      <div className="col-span-2 md:col-span-1 md:row-span-1 px-10 pt-10 sm:ml-16">
         <h2
           className={`text-4xl font-bold ${darkTheme ? "text-gray-300" : "text-gray-900"} leading-[3.25rem] mb-5`}
         >
@@ -62,22 +62,22 @@ const DetailsPage = () => {
           {t("pages.DetailsPage.blocks.why.content")}
         </p>
       </div>
-      <div className="col-span-2 md:col-span-1 md:row-span-1 px-10 pt-10">
+      <div className="col-span-2 md:col-span-1 md:row-span-1 px-10 pt-10 sm:mr-16">
         <Slider />
       </div>
 
-      <div className="col-span-2">
-        <div className="flex items-center justify-center px-24">
+      <div className="col-span-2 px-10 pt-10 sm:mx-16">
+        <div className="flex items-center justify-center space-x-10">
           {/* Left Button */}
           <button
-            className="absolute left-10 font-bold text-4xl text-indigo-600"
+            className="relative font-bold text-4xl text-indigo-600"
             onClick={handlePrev}
           >
             &lt;
           </button>
 
           {/* Content */}
-          <div className="md:p-10">
+          <div>
             <h2
               className={`text-4xl font-bold ${darkTheme ? "text-gray-300" : "text-gray-900"} leading-[3.25rem] mb-5`}
             >
@@ -90,7 +90,7 @@ const DetailsPage = () => {
 
           {/* Right Button */}
           <button
-            className="absolute right-10 font-bold text-4xl text-indigo-600"
+            className="relative font-bold text-4xl text-indigo-600"
             onClick={handleNext}
           >
             &gt;

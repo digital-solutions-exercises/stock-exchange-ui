@@ -57,7 +57,7 @@ const Slider: FC = () => {
               <a href="#" className="text-indigo-700 font-semibold">
                 {t("components.Slider.readMore")}
               </a>
-              <div className="flex justify-center space-x-4">
+              <div className="flex justify-center space-x-10">
                 <button
                   data-testid={`previous-button-id-${slide.id}`}
                   onClick={prevSlide}
