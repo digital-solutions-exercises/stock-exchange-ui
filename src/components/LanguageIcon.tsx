@@ -1,10 +1,10 @@
-import { FC, useContext, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { languages, LanguageType } from "../config/languages";
-import LanguageContext from "../context/LanguageContext";
+import i18n from "../i18n";
 
 const LanguageIcon: FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { language, setLanguage } = useContext(LanguageContext)!;
+  const [language, setLanguage] = useState(languages[0]);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -12,8 +12,21 @@ const LanguageIcon: FC = () => {
 
   const selectLanguage = (language: LanguageType) => {
     setLanguage(language);
+    sessionStorage.setItem("language", JSON.stringify(language));
     setIsDropdownOpen(false);
   };
+
+  useEffect(() => {
+    const selectedLanguage = sessionStorage.getItem("language");
+
+    if (selectedLanguage) {
+      setLanguage(JSON.parse(selectedLanguage));
+    }
+  }, []);
+
+  useEffect(() => {
+    i18n.changeLanguage(language.code);
+  }, [language]);
 
   return (
     <div className="relative cursor-pointer">

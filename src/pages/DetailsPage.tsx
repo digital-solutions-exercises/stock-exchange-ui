@@ -46,12 +46,12 @@ const DetailsPage = () => {
 
   return (
     <div
-      className={`h-full md:h-[calc(100vh-80px)] grid grid-cols-[3fr_4fr] md:grid-rows-[2fr_1fr] ${darkTheme ? "bg-gray-900 text-gray-300" : "bg-neutral-100"}`}
+      className={`h-full min-h-[calc(100vh-80px)] grid grid-cols-[1fr_2fr_1fr] grid-rows-[25%_50%] ${darkTheme ? "bg-gray-900 text-gray-300" : "bg-neutral-100"}`}
       data-testid="details-page-id"
     >
-      <div className="col-span-2 md:col-span-1 md:row-span-1 px-10 pt-10 sm:ml-16">
+      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-1 p-4 flex justify-center flex-col text-center">
         <h2
-          className={`text-4xl font-bold ${darkTheme ? "text-gray-300" : "text-gray-900"} leading-[3.25rem] mb-5`}
+          className={`text-4xl md:text-5xl font-bold ${darkTheme ? "text-gray-300" : "text-gray-900"} leading-[3.25rem] mb-5 sm:mb-10`}
         >
           {t("pages.DetailsPage.blocks.why.title")}
           <span className="text-indigo-600">
@@ -62,35 +62,35 @@ const DetailsPage = () => {
           {t("pages.DetailsPage.blocks.why.content")}
         </p>
       </div>
-      <div className="col-span-2 md:col-span-1 md:row-span-1 px-10 pt-10 sm:mr-16">
+      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-2 p-4 sm:p-10">
         <Slider />
       </div>
 
-      <div className="col-span-2 px-10 pt-10 sm:mx-16">
-        <div className="flex items-center justify-center space-x-10">
+      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-3 p-4 sm:p-10 text-center">
+        <div className="relative flex items-center justify-center space-x-10">
           {/* Left Button */}
           <button
-            className="relative font-bold text-4xl text-indigo-600"
+            className="absolute top-1/2 left-0 font-bold text-4xl text-indigo-600"
             onClick={handlePrev}
           >
             &lt;
           </button>
 
           {/* Content */}
-          <div>
+          <div className="h-full">
             <h2
               className={`text-4xl font-bold ${darkTheme ? "text-gray-300" : "text-gray-900"} leading-[3.25rem] mb-5`}
             >
               {t(detailsPageContent[currentSlide].title)}
             </h2>
-            <p className="text-gray-500">
+            <p className="text-gray-500 pr-10">
               {t(detailsPageContent[currentSlide].content)}
             </p>
           </div>
 
           {/* Right Button */}
           <button
-            className="relative font-bold text-4xl text-indigo-600"
+            className="absolute top-1/2 right-0 font-bold text-4xl text-indigo-600"
             onClick={handleNext}
           >
             &gt;

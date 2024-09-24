@@ -1,7 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import Slider from "../Slider";
 import ThemeContext from "../../context/ThemeContext";
-import LanguageContext from "../../context/LanguageContext";
 import { BrowserRouter as Router } from "react-router-dom";
 import { languages } from "../../config/languages";
 
@@ -14,15 +13,11 @@ jest.mock("react-i18next", () => ({
 describe("Slider.tsx", () => {
   const renderSlider = (darkTheme = false) => {
     render(
-      <LanguageContext.Provider
-        value={{ language: languages[0], setLanguage: jest.fn() }}
-      >
         <ThemeContext.Provider value={{ darkTheme, setDarkTheme: jest.fn() }}>
           <Router>
             <Slider />
           </Router>
         </ThemeContext.Provider>
-      </LanguageContext.Provider>,
     );
   };
 

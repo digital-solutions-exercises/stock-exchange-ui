@@ -1,28 +1,22 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import LanguageIcon from "../LanguageIcon";
-import LanguageContext from "../../context/LanguageContext";
 import { languages } from "../../config/languages";
+import i18n from "../../i18n";
 
-const mockSetLanguage = jest.fn();
+jest.mock("../../i18n", () => ({
+  changeLanguage: jest.fn(),
+}));
 
 describe("LanguageIcon.tsx", () => {
-  const renderLanguageIcon = (language = languages[0]) => {
+  const renderLanguageIcon = () => {
     render(
-      <LanguageContext.Provider
-        value={{ language, setLanguage: mockSetLanguage }}
-      >
         <LanguageIcon />
-      </LanguageContext.Provider>,
     );
   };
 
-  afterEach(() => {
-    mockSetLanguage.mockClear();
-  });
-
   test("renders the language button with the correct flag", () => {
     const selectedLanguage = languages[0];
-    renderLanguageIcon(selectedLanguage);
+    renderLanguageIcon();
 
     const flagImage = screen.getByAltText(`${selectedLanguage.name} flag`);
     expect(flagImage).toBeInTheDocument();
@@ -54,7 +48,7 @@ describe("LanguageIcon.tsx", () => {
     const languageOption = screen.getAllByRole("listitem")[1];
     fireEvent.click(languageOption);
 
-    expect(mockSetLanguage).toHaveBeenCalledWith(languages[1]);
+    expect(i18n.changeLanguage).toHaveBeenCalledWith(languages[1].code);
     expect(screen.queryByRole("list")).not.toBeInTheDocument();
   });
 

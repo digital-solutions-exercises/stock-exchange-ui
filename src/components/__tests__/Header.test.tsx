@@ -2,7 +2,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Header from "../Header";
 import ThemeContext from "../../context/ThemeContext";
-import LanguageContext from "../../context/LanguageContext";
 import { languages } from "../../config/languages";
 
 jest.mock("react-i18next", () => ({
@@ -11,17 +10,19 @@ jest.mock("react-i18next", () => ({
   }),
 }));
 
+jest.mock("../../i18n", () => ({
+  changeLanguage: jest.fn(),
+}));
+
 describe("Header.tsx", () => {
   const renderHeader = (darkTheme = false, language = languages[0]) => {
     render(
-      <LanguageContext.Provider value={{ language, setLanguage: jest.fn() }}>
         <ThemeContext.Provider value={{ darkTheme, setDarkTheme: jest.fn() }}>
           <Router>
             <Header />
           </Router>
         </ThemeContext.Provider>
-        ,
-      </LanguageContext.Provider>,
+        
     );
   };
 

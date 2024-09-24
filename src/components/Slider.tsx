@@ -1,16 +1,15 @@
 import { useContext, useEffect, useState, FC } from "react";
 import ThemeContext from "../context/ThemeContext";
 import { Slide, slides } from "../constants/blogData";
-import LanguageContext from "../context/LanguageContext";
 import { useTranslation } from "react-i18next";
 
 const Slider: FC = () => {
   const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const { darkTheme } = useContext(ThemeContext)!;
-  const { language } = useContext(LanguageContext)!;
+  const language = sessionStorage.getItem("language");
   const [translatedSlides, setTranslatedSlides] = useState(
-    slides(language.code),
+    slides(language ? JSON.parse(language).code : "en"),
   )!;
 
   const prevSlide = () => {
@@ -28,11 +27,11 @@ const Slider: FC = () => {
   };
 
   useEffect(() => {
-    setTranslatedSlides(slides(language.code));
+    setTranslatedSlides(slides(language ? JSON.parse(language).code : "en"));
   }, [language, setTranslatedSlides]);
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden sm:pb-32">
       <div
         className="w-full flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -40,20 +39,22 @@ const Slider: FC = () => {
         {translatedSlides.map((slide: Slide) => (
           <div key={slide.id} className="w-full flex-shrink-0">
             <div className="relative">
-              <img
-                src={slide.imageUrl}
-                alt={slide.title}
-                className="rounded-2xl w-full max-h-96 lg:max-h-40 xl:max-h-56 2xl:max-h-72 object-cover p-5"
-              />
-              <h3
-                className={`text-xl ${darkTheme ? "text-gray-300" : "text-gray-900"} font-medium leading-8 mb-4`}
-              >
-                {slide.title}
-              </h3>
-              <p className="text-gray-500 leading-6 mb-8">
-                {slide.description &&
-                  slide.description.substring(0, 140) + "..."}
-              </p>
+              <div className="flex justify-center flex-col text-center">
+                <img
+                  src={slide.imageUrl}
+                  alt={slide.title}
+                  className="rounded-2xl w-full max-h-96 object-cover p-5"
+                />
+                <h3
+                  className={`text-2xl ${darkTheme ? "text-gray-300" : "text-gray-900"} font-medium leading-8 mb-4`}
+                >
+                  {slide.title}
+                </h3>
+                <p className="text-gray-500 leading-6 mb-8">
+                  {slide.description &&
+                    slide.description.substring(0, 140) + "..."}
+                </p>
+              </div>
               <a href="#" className="text-indigo-700 font-semibold">
                 {t("components.Slider.readMore")}
               </a>

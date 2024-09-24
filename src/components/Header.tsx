@@ -1,20 +1,37 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import ThemeIcon from "./ThemeIcon";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ThemeContext from "../context/ThemeContext";
 import LanguageIcon from "./LanguageIcon";
 import { useTranslation } from "react-i18next";
 import { Bars3Icon } from "@heroicons/react/24/solid";
+import { ActiveLinkType } from "../App";
 
 const Header: FC = () => {
   const { t } = useTranslation();
-  const [activeLink, setActiveLink] = useState("/"); // TO DO put this into context
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { darkTheme } = useContext(ThemeContext)!;
+  const [activeLink, setActiveLink] = useState("/");
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
+
+  const handleLinkClick = (link: ActiveLinkType) => {
+    setActiveLink(link);
+    sessionStorage.setItem("activeLink", link);
+  };
+
+  useEffect(() => {
+    const storedActiveLink = sessionStorage.getItem("activeLink");
+
+    if (storedActiveLink) {
+      setActiveLink(storedActiveLink);
+    } else {
+      setActiveLink(location.pathname);
+    }
+  }, [location.pathname]);
 
   return (
     <>
@@ -50,10 +67,7 @@ const Header: FC = () => {
                 ? "text-indigo-600 font-bold"
                 : "text-indigo-300 hover:text-indigo-500"
             }
-            onClick={() => {
-              setActiveLink("/");
-              setIsMenuOpen(false);
-            }}
+            onClick={() => handleLinkClick("/")}
           >
             {t("components.Header.homeLink")}
           </Link>
@@ -64,10 +78,7 @@ const Header: FC = () => {
                 ? "text-indigo-600 font-bold"
                 : "text-indigo-300 hover:text-indigo-500"
             }
-            onClick={() => {
-              setActiveLink("/details");
-              setIsMenuOpen(false);
-            }}
+            onClick={() => handleLinkClick("/details")}
           >
             {t("components.Header.detailsLink")}
           </Link>
@@ -78,10 +89,7 @@ const Header: FC = () => {
                 ? "text-indigo-600 font-bold"
                 : "text-indigo-300 hover:text-indigo-500"
             }
-            onClick={() => {
-              setActiveLink("/contact-us");
-              setIsMenuOpen(false);
-            }}
+            onClick={() => handleLinkClick("/contact-us")}
           >
             {t("components.Header.contactUsLink")}
           </Link>

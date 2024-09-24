@@ -59,14 +59,14 @@ const Chart: FC = () => {
     filter: FilterType,
     data: { value: string; date: string }[],
   ) => {
-    localStorage.setItem(
+    sessionStorage.setItem(
       `chartData_${filter}_${stockSymbol}`,
       JSON.stringify(data),
     );
   };
 
   const loadPersistedData = (filter: FilterType) => {
-    const storedData = localStorage.getItem(
+    const storedData = sessionStorage.getItem(
       `chartData_${filter}_${stockSymbol}`,
     );
     return storedData ? JSON.parse(storedData) : null;

@@ -48,7 +48,7 @@ describe("Chart.tsx", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    localStorage.clear();
+    sessionStorage.clear();
   });
 
   test("renders filter buttons", async () => {
@@ -97,9 +97,9 @@ describe("Chart.tsx", () => {
     });
   });
 
-  test("fetches data from localStorage if it exists", async () => {
+  test("fetches data from sessionStorage if it exists", async () => {
     const persistedData = JSON.stringify(mockYahooHistoryData);
-    localStorage.setItem("chartData_1Y_AAPL", persistedData);
+    sessionStorage.setItem("chartData_1Y_AAPL", persistedData);
 
     const fetchYahooHistoryDataMock = jest.fn();
 
@@ -134,7 +134,7 @@ describe("Chart.tsx", () => {
       },
     });
 
-    const storedData = localStorage.getItem("chartData_1Y_AAPL");
+    const storedData = sessionStorage.getItem("chartData_1Y_AAPL");
     expect(storedData).toBeDefined();
     expect(JSON.parse(storedData!)).toEqual(
       mockYahooHistoryData.map(({ close, date }) => {
