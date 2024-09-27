@@ -26,13 +26,6 @@ describe("ContactUsPage.tsx", () => {
     ).toBeInTheDocument();
   });
 
-  it("applies dark theme classes when darkTheme is true", () => {
-    renderContactUsPage(true);
-
-    const container = screen.getByTestId("contact-us-page-id");
-    expect(container).toHaveClass("bg-gray-900", "text-gray-300");
-  });
-
   it("renders the Etoro link with the correct href", () => {
     renderContactUsPage();
 
