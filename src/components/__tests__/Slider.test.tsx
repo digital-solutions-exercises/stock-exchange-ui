@@ -13,11 +13,11 @@ jest.mock("react-i18next", () => ({
 describe("Slider.tsx", () => {
   const renderSlider = (darkTheme = false) => {
     render(
-        <ThemeContext.Provider value={{ darkTheme, setDarkTheme: jest.fn() }}>
-          <Router>
-            <Slider />
-          </Router>
-        </ThemeContext.Provider>
+      <ThemeContext.Provider value={{ darkTheme, setDarkTheme: jest.fn() }}>
+        <Router>
+          <Slider />
+        </Router>
+      </ThemeContext.Provider>,
     );
   };
 

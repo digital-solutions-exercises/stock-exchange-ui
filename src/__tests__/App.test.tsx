@@ -32,7 +32,7 @@ describe("App.tsx", () => {
 
     fireEvent.click(detailsLink);
 
-    const homeLink = screen.getByRole("link", { name: /Stock Exchange/i });
+    const homeLink = screen.getAllByTestId("dubak-logo-id")[0];
 
     fireEvent.click(homeLink);
 

@@ -9,9 +9,7 @@ jest.mock("../../i18n", () => ({
 
 describe("LanguageIcon.tsx", () => {
   const renderLanguageIcon = () => {
-    render(
-        <LanguageIcon />
-    );
+    render(<LanguageIcon />);
   };
 
   test("renders the language button with the correct flag", () => {

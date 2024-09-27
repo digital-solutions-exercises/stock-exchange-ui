@@ -46,7 +46,7 @@ const DetailsPage = () => {
 
   return (
     <div
-      className={`h-full min-h-[calc(100vh-80px)] grid grid-cols-[1fr_2fr_1fr] grid-rows-[25%_50%] ${darkTheme ? "bg-gray-900 text-gray-300" : "bg-neutral-100"}`}
+      className={`h-full min-h-[calc(100vh-80px)] grid grid-cols-[1fr_2fr_1fr] grid-rows-[300px_auto_200px] ${darkTheme ? "bg-gray-900 text-gray-300" : "bg-neutral-100"}`}
       data-testid="details-page-id"
     >
       <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-1 p-4 flex justify-center flex-col text-center">
@@ -62,12 +62,12 @@ const DetailsPage = () => {
           {t("pages.DetailsPage.blocks.why.content")}
         </p>
       </div>
-      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-2 p-4 sm:p-10">
+      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-2 p-4">
         <Slider />
       </div>
 
-      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-3 p-4 sm:p-10 text-center">
-        <div className="relative flex items-center justify-center space-x-10">
+      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-3 p-4 text-center">
+        <div className="relative flex items-center justify-center space-x-10 h-full">
           {/* Left Button */}
           <button
             className="absolute top-1/2 left-0 font-bold text-4xl text-indigo-600"

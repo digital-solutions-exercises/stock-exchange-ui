@@ -16,7 +16,7 @@ const ThemeIcon: FC = () => {
     >
       <MoonIcon
         data-testid="theme-icon-id"
-        className={`h-4 w-4 sm:h-8 sm:w-8 cursor-pointer stroke-1 fill-none stroke-neutral-400 ${darkTheme ? "fill-yellow-400 stroke-yellow-400" : "fill-none stroke-neutral-400"}`}
+        className={`h-4 w-4 sm:h-8 sm:w-8 cursor-pointer stroke-1 ${darkTheme ? "fill-yellow-400 stroke-yellow-400" : "fill-none stroke-neutral-400"}`}
       />
     </button>
   );

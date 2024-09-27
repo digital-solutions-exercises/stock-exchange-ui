@@ -17,19 +17,18 @@ jest.mock("../../i18n", () => ({
 describe("Header.tsx", () => {
   const renderHeader = (darkTheme = false, language = languages[0]) => {
     render(
-        <ThemeContext.Provider value={{ darkTheme, setDarkTheme: jest.fn() }}>
-          <Router>
-            <Header />
-          </Router>
-        </ThemeContext.Provider>
-        
+      <ThemeContext.Provider value={{ darkTheme, setDarkTheme: jest.fn() }}>
+        <Router>
+          <Header />
+        </Router>
+      </ThemeContext.Provider>,
     );
   };
 
   test("renders Home and Details links", () => {
     renderHeader();
 
-    const homeLink = screen.getByText("components.Header.homeLink");
+    const homeLink = screen.getAllByTestId("dubak-logo-id")[0];
     const detailsLink = screen.getByText("components.Header.detailsLink");
 
     expect(homeLink).toBeInTheDocument();
@@ -67,7 +66,7 @@ describe("Header.tsx", () => {
   test("applies active class to Home link when it is active", () => {
     renderHeader();
 
-    const homeLink = screen.getByText("components.Header.homeLink");
+    const homeLink = screen.getAllByTestId("dubak-logo-id")[0];
     expect(homeLink).not.toHaveClass("text-indigo-300");
 
     const detailsLink = screen.getByText("components.Header.detailsLink");

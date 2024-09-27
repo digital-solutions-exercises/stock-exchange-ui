@@ -43,10 +43,27 @@ const Header: FC = () => {
             : "bg-white border-neutral-200"
         }`}
       >
+        <Link
+          to="/"
+          className="sm:hidden h-8 w-auto"
+          onClick={() => handleLinkClick("/")}
+        >
+          <img
+            data-testid="dubak-logo-id"
+            src={
+              darkTheme
+                ? "/images/dubak-logo-dark.png"
+                : "/images/dubak-logo-white.png"
+            }
+            alt="Logo"
+            className="h-12 w-auto"
+          />
+        </Link>
+
         <div className="sm:hidden h-6 w-6">
           <Bars3Icon
             data-testid="header-menu-icon-id"
-            className={`h-8 w-8 text-black ${darkTheme ? "text-white" : ""}`}
+            className="h-8 w-8 text-black text-indigo-600"
             onClick={toggleMenu}
           />
         </div>
@@ -62,14 +79,24 @@ const Header: FC = () => {
         >
           <Link
             to="/"
-            className={
-              activeLink === "/"
-                ? "text-indigo-600 font-bold"
-                : "text-indigo-300 hover:text-indigo-500"
-            }
+            className={`hidden sm:block
+              ${
+                activeLink === "/"
+                  ? "text-indigo-600 font-bold"
+                  : "text-indigo-300 hover:text-indigo-500"
+              }`}
             onClick={() => handleLinkClick("/")}
           >
-            {t("components.Header.homeLink")}
+            <img
+              data-testid="dubak-logo-id"
+              src={
+                darkTheme
+                  ? "/images/dubak-logo-dark.png"
+                  : "/images/dubak-logo-white.png"
+              }
+              alt="Logo"
+              className="h-12 w-auto"
+            />
           </Link>
           <Link
             to="/details"

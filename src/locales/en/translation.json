@@ -5,8 +5,8 @@
             "blocks": {
                 "why": {
                     "title": "Why invest with ",
-                    "titleSuffix": "Stock Exchange?",
-                    "content": "Looking for a profitable, expert-backed investment opportunity? At Stock Exchange, we not only have the experience, numbers, and financial expertise to guide you, but we also offer something unique: the power to invest on your own terms—without paying hefty fees to intermediaries."
+                    "titleSuffix": "Dubak?",
+                    "content": "Looking for a profitable, expert-backed investment opportunity? At Dubak Investments, we not only have the experience, numbers, and financial expertise to guide you, but we also offer something unique: the power to invest on your own terms—without paying hefty fees to intermediaries."
                 },
                 "how": {
                     "title": "How Does It Work?",
@@ -14,7 +14,7 @@
                 },
                 "start": {
                     "title": "Get Started with Us",
-                    "content": "Reach us via email to schedule a call, and we’ll walk you through setting up your Stock Exchange account. From navigating the platform to making your first deposit, and offering personalized investment suggestions, we’re here to ensure your journey to investing success is smooth and informed."
+                    "content": "Reach us via email to schedule a call, and we’ll walk you through setting up your account in stock exchange. From navigating the platform to making your first deposit, and offering personalized investment suggestions, we’re here to ensure your journey to investing success is smooth and informed."
                 },
                 "benefits": {
                     "title": "Exclusive Benefits",
@@ -27,25 +27,23 @@
             }
         },
         "ContactUsPage": {
-            "majorHeader": "Don't wait to start investing—reach out to us today!",
+            "majorHeader": "Don't wait to start investing",
+            "minorHeader": "If you're interested in all the benefits of investing, especially the ability to invest directly on the stock exchange without having to pay fees to third parties, don't hesitate to contact us.",
             "description": {
-                "1": " • If you're interested in all the benefits of investing, especially the ability to invest directly on the stock exchange without having to pay fees to third parties, don't hesitate to contact us.",
-                "2": " • We will guide you step-by-step on how to create an account directly on the trading platform <0>Etoro</0> through a video call,",
-                "3": " • In most cases, a bank or financial institution acts as an intermediary between the investor and the trading platform, taking a share of the profits. With us, you can bypass this middleman by paying a one-time fee, potentially saving hundreds or even thousands of euros in fees, especially for larger investments,",
-                "4": " • We will provide expert advice on what investments are worthwhile, how and when profits from these investments should be taxed, and the best times and conditions for buying or selling,",
-                "5": " • Long-term investing allows you to build a financial reserve, protect against inflation, grow your wealth, and plant the seeds for future returns,",
-                "6": " • Financial institutions, advisors, and banks are right in saying that investing is an effective way to grow your capital. However, they charge excessively for their services,",
-                "7": " • We are merely information intermediaries, but the decisions of where, when, and how much to invest are entirely up to you."
+                "1": "We will guide you step-by-step on how to create an account directly on the trading platform <0>Etoro</0> through a video call,",
+                "2": "In most cases, a bank or financial institution acts as an intermediary between the investor and the trading platform, taking a share of the profits. With us, you can bypass this middleman by paying a one-time fee, potentially saving hundreds or even thousands of euros in fees, especially for larger investments,",
+                "3": "We will provide expert advice on what investments are worthwhile, how and when profits from these investments should be taxed, and the best times and conditions for buying or selling,",
+                "4": "Long-term investing allows you to build a financial reserve, protect against inflation, grow your wealth, and plant the seeds for future returns,",
+                "5": "Financial institutions, advisors, and banks are right in saying that investing is an effective way to grow your capital. However, they charge excessively for their services,",
+                "6": "We are merely information intermediaries, but the decisions of where, when, and how much to invest are entirely up to you."
             },
             "sendButton": "Send message"
         }
     },
     "components": {
         "Header": {
-            "homeLink": "Stock Exchange",
             "detailsLink": "Invest with Confidence",
-            "contactUsLink": "Contact Us",
-            "logo": "Stock Exchange"
+            "contactUsLink": "Contact Us"
         },
         "Details": {
             "detailList": {
