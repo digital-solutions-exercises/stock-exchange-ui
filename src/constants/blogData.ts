@@ -11,7 +11,7 @@ export type Slide = {
 export const slides = (language: "en" | "sk" = "en"): Slide[] => [
   {
     id: 1,
-    imageUrl: "https://pagedone.io/asset/uploads/1696244059.png",
+    imageUrl: "/images/blog-images/organize_portfolio.avif",
     title:
       language === "en"
         ? "Clever ways to invest in product to organize your portfolio"
@@ -23,7 +23,7 @@ export const slides = (language: "en" | "sk" = "en"): Slide[] => [
   },
   {
     id: 2,
-    imageUrl: "https://pagedone.io/asset/uploads/1696244074.png",
+    imageUrl: "/images/blog-images/systematic_investment.jpg",
     title:
       language === "en"
         ? "How to grow your profit through systematic investment with us"
@@ -35,8 +35,7 @@ export const slides = (language: "en" | "sk" = "en"): Slide[] => [
   },
   {
     id: 3,
-    imageUrl:
-      "https://s.yimg.com/uu/api/res/1.2/CGCYssT6RULh7lrtLZwamQ--~B/Zmk9ZmlsbDtoPTYzO3B5b2ZmPTA7dz04NDthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-uploaded-images/2024-08/e387daa0-6b03-11ef-be6e-996ce352f415.cf.webp",
+    imageUrl: "/images/blog-images/why_gold.avif",
     title:
       language === "en"
         ? "Why gold still has more upside: Truist strategist"

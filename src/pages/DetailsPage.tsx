@@ -49,7 +49,7 @@ const DetailsPage = () => {
       className={`h-full min-h-[calc(100vh-80px)] grid grid-cols-[1fr_2fr_1fr] grid-rows-[300px_auto_200px] ${darkTheme ? "bg-gray-900 text-gray-300" : "bg-neutral-100"}`}
       data-testid="details-page-id"
     >
-      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-1 p-4 flex justify-center flex-col text-center">
+      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-1 p-6 sm:px-10 flex justify-center flex-col text-center">
         <h2
           className={`text-4xl md:text-5xl font-bold ${darkTheme ? "text-gray-300" : "text-gray-900"} leading-[3.25rem] mb-5 sm:mb-10`}
         >
@@ -62,11 +62,11 @@ const DetailsPage = () => {
           {t("pages.DetailsPage.blocks.why.content")}
         </p>
       </div>
-      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-2 p-4">
+      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-2 p-6 sm:px-10">
         <Slider />
       </div>
 
-      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-3 p-4 text-center">
+      <div className="col-span-3 xl:col-start-2 xl:col-end-3 row-start-3 p-6 sm:px-10 text-center">
         <div className="relative flex items-center justify-center space-x-10 h-full">
           {/* Left Button */}
           <button

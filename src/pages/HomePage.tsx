@@ -45,7 +45,7 @@ const HomePage = () => {
   return (
     <div
       data-testid="home-page-id"
-      className={`sm:h-[calc(100vh-80px)] grid grid-cols-3 grid-rows-8 auto-rows-fr gap-3 sm:gap-6 p-6 sm:pl-10 sm:pr-10 ${darkTheme ? "bg-gray-900 text-gray-300" : "bg-neutral-100"}`}
+      className={`sm:h-[calc(100vh-80px)] grid grid-cols-3 grid-rows-8 auto-rows-fr gap-3 sm:gap-6 p-6 sm:px-10 ${darkTheme ? "bg-gray-900 text-gray-300" : "bg-neutral-100"}`}
     >
       <div className="col-span-3 row-span-1 flex justify-start items-center">
         <ChartHeader name={quote.longName || quote.shortName} />
